@@ -1,0 +1,635 @@
+\documentclass{beamer}
+\mode<presentation>
+
+
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ae}
+\usepackage{graphicx,color}
+\usepackage[all]{xy}
+\usepackage{empheq}
+\usepackage{fancybox}
+\usepackage{textcomp}
+\usepackage[all]{xy}
+\usepackage{textpos}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{enumerate}
+
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{calc}
+
+\usepackage{tkz-graph}
+\GraphInit[vstyle = Shade]
+\tikzset{
+  LabelStyle/.style = { rectangle, rounded corners, draw,
+                        minimum width = 2em, fill = yellow!50,
+                        text = red, font = \bfseries },
+  VertexStyle/.append style = { inner sep=5pt,
+                                font = \Large\bfseries},
+  EdgeStyle/.append style = {->, bend left} 
+}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=20pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{edge} = [draw,thick,->]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+  arn_n/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+    fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+  arn_r/.style = {treenode, circle, red, draw=red, 
+    text width=1.5em, very thick},% arbre rouge noir, noeud rouge
+  arn_x/.style = {treenode, rectangle, draw=black,
+    minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
+}
+
+\newcommand{\floor}[1]{$\lfloor$ #1 $\rfloor$}
+
+\newcommand\Fontvi{\fontsize{9}{7.2}\selectfont}
+
+
+
+\usetheme{Boadilla}
+
+\newcommand{\PC}[1]{\ensuremath{\left(#1\right)}}
+
+
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}
+
+
+
+\title {Tipos de Problemas}
+
+\author[Projeto Semeando Talentos]{ Projeto Semeando Talentos$^{1}$  }
+
+\institute[UFC]{$^{1}$Universidade Federal do Ceará - Campus de Quixadá\\}
+
+\date{}
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{}
+    \small
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+
+
+\begin{frame}{Tipos de Problemas}
+
+\begin{itemize}
+ \pause \item \textbf{Problemas Lógicos:} Problemas que existem um raciocínio lógico apurado e uma boa análise de casos. Podem ser divididos em: 
+ \begin{itemize} 
+ \pause \item \textbf{Problemas de Agrupamento}: Construção de um ou mais grupos satisfazendo regras.
+ \pause \item \textbf{Problemas de Ordenação}: Construção de ordenação de objetos satisfazendo regras.
+ \end{itemize}
+ \pause \item \textbf{Problemas de Análise}: Encontrar um número de operações de um certo algoritmo sobre um conjunto de dados.
+ \pause \item \textbf{Problemas de Simulação}: Tarefas simples que pedem aos competidores que sigam um conjunto bem definido de
+instruções.
+ \pause \item  \textbf{Problemas Algorítmicos}: Tarefas não pedem explicitamente um algoritmo, mas os estudantes são encourajados a desenvolver um método sistemático para resolver estas tarefas.
+\end{itemize}
+
+ 
+\end{frame}
+
+
+\begin{frame}{Estrutura Geral dos Problemas Lógicos}
+
+A estrutura do problema pode ser dividida em três partes:
+
+\begin{itemize}
+\item Cenário: introduz conjuntos de variáveis (pessoas, locais,
+coisas, eventos etc).
+\item Regras: conjunto de declarações que descreve as relações
+entre as variáveis.
+\item Perguntas: conjunto de perguntas relacionadas às variáveis
+e às regras.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{OBI-2009-F1N1 - Sorveteria}
+
+\pause
+Cenário
+{\small
+\fcolorbox{black}{yellow}{
+\begin{minipage}{0.95\textwidth}
+Para montar seu pote de sorvete você precisa escolher cinco dos sete sabores
+disponíveis: T, U, V, W, X, Y e Z. As seguintes condições se aplicam a sua
+escolha:
+\end{minipage}
+}
+}
+
+\pause 
+Regras
+{\small
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.95\textwidth}
+\begin{itemize}
+\item Cada sabor pode no máximo ser escolhido uma vez.
+\item W ou Z deve ser escolhido, mas não ambos.
+\item Se Y é escolhido então V também deve ser escolhido.
+\item Se U é escolhido então W não pode ser escolhido.
+\end{itemize}
+\end{minipage}
+}
+}
+\pause 
+Pegunta
+{\small
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.95\textwidth}
+1. Se U for escolhido então qual deve, com certeza, ser também escolhido?
+(A) T. (B) W. (C) X. (D) Y. (E) Z.
+\end{minipage}
+}
+}
+
+
+ 
+\end{frame}
+
+
+
+\begin{frame}{Problemas de Agrupamento}
+ 
+\begin{itemize}
+ \pause \item Precisamos construir um ou mais grupos respeitando as regras dadas que podem ser:
+ \begin{itemize}
+ \pause \item Regras condicionais: Se X (não) foi escolhido  então Y (não) deve ser escolhido.
+ \pause \item Regras de combinação: W ou Z deve ser escolhido, mas não ambos.  
+ \pause \item Regras de atribuição: Cada variável pode ser escolhida no máximo uma vez.
+ \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{OBI-2009-F1N1 - Sorveteria}
+
+
+\begin{multicols}{2}
+
+\Fontvi{
+Se U for escolhido então qual deve, com certeza, ser também escolhido?
+\begin{enumerate}[(A)]
+ \item T
+ \item W
+ \item X
+ \item Y
+ \item Z
+\end{enumerate}
+}
+
+
+
+\columnbreak
+
+
+{\tiny
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item Cada sabor pode no máximo ser escolhido uma vez.
+\item W ou Z deve ser escolhido, mas não ambos.
+\item Se Y é escolhido então V também deve ser escolhido.
+\item Se U é escolhido então W não pode ser escolhido.
+\end{itemize}
+\end{minipage}
+}
+}
+
+
+\begin{itemize}
+ \pause \item  U foi escolhido
+ \pause \item  Se U foi escolhido então W não pode ser escolhido.
+ \pause \item  W não pode ser escolhido
+ \pause \item  W ou Z deve ser escolhido, mas não ambos 
+ \pause \item  Z deve ser escolhido
+\end{itemize}
+
+\end{multicols}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Problemas de Ordenação}
+
+\begin{itemize}
+ \item Neste tipo de problema, precisamos construir uma ordem dos objetos respeitando as regras que podem ser:
+ \begin{itemize}
+ \pause \item Regras de posicionamento: Objeto X está na posição $i$.
+ \pause \item Regras de sequenciamento: Objeto X vem antes (ou depois) de Y  
+ \pause \item Regras condicionais: Se Objeto X vem antes (depois) de Objeto Y então Objeto W vem antes (depois) do Objeto Z.
+ \pause \item Regras de combinação: O objeto X (não) deve ser adjacente ao Objeto Y 
+ \end{itemize}
+\
+\end{itemize}
+
+ 
+\end{frame}
+
+
+\begin{frame}{OBI-2008-F1N1 - Um dia de Trabalho}
+
+{\small
+Um funcionário de uma empresa tem seis tarefas para realizar hoje.
+Essas tarefas são identificadas por R, B, G, S, W e T. As tarefas não podem ser
+realizadas ao mesmo tempo e devem ser feitas numa ordem que obedeça as restrições abaixo.
+
+\begin{itemize}
+\item W é realizada em algum momento após G e
+algum momento após T.
+\item S é realizada em algum momento após W.
+\item R é realizada em algum momento antes de S.
+\end{itemize}
+
+Qual das opções abaixo é uma lista completa e correta da ordem de realização das tarefas,
+da primeira à última?\\
+(A) G,R,T,S,W,B. (B) G,T,W,S,R,B. (C) B,G,T,R,W,S. \\
+(D) G,B,W,R,T,S. (E) T,W,R,G,S,B.
+}
+\end{frame}
+
+
+\begin{frame}{OBI-2008-F1N1 - Um dia de Trabalho}
+
+Dadas as regras:
+
+\begin{itemize}
+\item W é realizada em algum momento após G e
+algum momento após T.
+\item S é realizada em algum momento após W.
+\item R é realizada em algum momento antes de S.
+\end{itemize}
+
+Podemos construir a partir das informações de ordenação, o seguinte diagrama:
+
+
+\begin{center}
+\begin{tikzpicture}
+
+\node[vertex] (G) at (0,2) {$G$};
+\node[vertex] (T) at (0,0) {$T$};
+\node[vertex] (W) at (3,1) {$W$};
+\node[vertex] (R) at (3,-1) {$R$};
+\node[vertex] (S) at (6,1) {$S$};
+
+\path[edge] (G) -- (W);
+\path[edge] (T) -- (W);
+\path[edge] (W) -- (S);
+\path[edge] (R) -- (S);
+
+\end{tikzpicture}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}{OBI-2008-F1N1 - Um dia de Trabalho}
+
+Considerando este diagrama:
+
+\begin{center}
+\begin{tikzpicture}
+
+\node[vertex] (G) at (0,2) {$G$};
+\node[vertex] (T) at (0,0) {$T$};
+\node[vertex] (W) at (3,1) {$W$};
+\node[vertex] (R) at (3,-1) {$R$};
+\node[vertex] (S) at (6,1) {$S$};
+
+\path[edge] (G) -- (W);
+\path[edge] (T) -- (W);
+\path[edge] (W) -- (S);
+\path[edge] (R) -- (S);
+
+\end{tikzpicture}
+\end{center}
+
+Podemos construir diversas ordenações possíveis:
+
+\begin{itemize}
+ \pause \item G,T,W,R,S
+ \pause \item T,G,W,R,S
+ \pause \item G,T,R,W,S
+ \pause \item T,G,R,W,S
+\end{itemize}
+
+
+ 
+\end{frame}
+
+
+\begin{frame}{OBI-2008-F1N1 - Um dia de Trabalho}
+
+Considerando este diagrama:
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+
+\node[vertex] (G) at (0,2) {$G$};
+\node[vertex] (T) at (0,0) {$T$};
+\node[vertex] (W) at (3,1) {$W$};
+\node[vertex] (R) at (3,-1) {$R$};
+\node[vertex] (S) at (6,1) {$S$};
+
+\path[edge] (G) -- (W);
+\path[edge] (T) -- (W);
+\path[edge] (W) -- (S);
+\path[edge] (R) -- (S);
+
+\end{tikzpicture}
+\end{center}
+
+{\small
+Qual das opções abaixo é uma lista completa e correta da ordem de realização das tarefas, da primeira à última?
+\begin{enumerate}
+\pause \item  G,R,T,S,W,B. [R não vem antes de T] 
+\pause \item  G,T,W,S,R,B. [S não vem antes de R]
+\pause \item  B,G,T,R,W,S. [OK]
+\pause \item  G,B,W,R,T,S. [W não vem antes de T]
+\pause \item  T,W,R,G,S,B. [T não vem antes de W]
+\end{enumerate}
+}
+
+\end{frame}
+
+\begin{frame}{Problemas de Análise}
+
+\begin{itemize}
+\pause \item Neste tipo de problema, os estudantes precisam estudar o comportamento de um algoritmo descrito informalmente.
+\pause \item O problema pode pedir o pior caso ou número aproximado de casos, encourajando em pensar em casos patalógicos e na análise de complexidade
+do algoritmo.
+\pause \item Além disso, este problemas costumam pedir sequência de instruções com erro ou completar um conjunto de cenários exaustivo.
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{OBI2019 NJF2 - Colar}
+
+Joel é um artesão que faz colares com conchinhas. Ele utiliza dois tipos de conchinhas, que vamos representar por [ ] e \{\}. 
+Para fazer um colar Joel inicia com um par de conchinhas, como mostra o passo 1 da figura abaixo, em que ele escolheu para iniciar 
+a conchinha do tipo {}. Para terminar o colar novos pares de conchinhas são repetidamente inseridos em qualquer posição do colar, 
+como mostram o passo 2 (novo par [ ]), o passo 3 (novo par \{\}) e o passo 4 (novo par \{\}).
+
+\begin{center}
+\begin{tabular}{cccc}
+\{ \} & \{ [ ] \}     & \{ [ ] \{ \} \} & \{ [ ] \{ \} \} \{ \} \\
+\textbf{passo 1} & \textbf{passo 2} & \textbf{passo 3}     & \textbf{passo 4}\\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{OBI2019 NJF2 - Colar}
+
+Questão 11. Qual dos seguintes colares não foi
+feito usando o método descrito acima?
+\begin{enumerate}[(A)]
+\item \{ \{ \{ \} \} [ ] \}
+\item \{ [ \} ] \{ \} [ ]
+\item \{ \{ \{ \{ \} \} \} [ ] \}
+\item \{ \} \{ \} \{ \} [ ] [ ] [ ]
+\item \{ [ \{ [ ] [ ] \} ] \}
+\end{enumerate}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Problemas de Simulação}
+
+\begin{itemize}
+\item Neste tipo de problema, os competidores precisam seguir um conjunto de instruções bem-definidas.
+
+\item Esse tipo de questão testa a habilidade do estudante de entender e seguir um conjunto de instruções bem-definidas apresentadas em português. 
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{OBI2019 NJF1 - Robô Linear}
+
+RL2 é um robô que se move apenas em linha reta, sobre um trilho. Ele é utilizado dentro de uma fábrica para realizar diversas tarefas, como distribuir peças e ferramentas para os trabalhadores.
+
+
+O RL2 é comandado utilizando uma linguagem de programação que tem apenas dois comandos:
+
+\begin{itemize}
+ \item F: ao receber esse comando, o robô move-se 1 metro para a frente;
+ \item T: ao receber esse comando, o robô move-se 1 metro para trás;
+\end{itemize}
+ 
+Após receber e executar um comando, o robô permanece parado até receber o próximo comando.
+
+\end{frame}
+
+
+
+\begin{frame}{OBI2019 NJF1 - Robô Linear}
+
+Se o robô está inicialmente parado e recebe a sequência de comandos F F T F F T F T T F,
+
+qual a distância em metros entre a posição inicial e a posição final do robô?
+
+
+\begin{enumerate}
+
+ \item[(A)] 0
+ \item[(B)] 2
+ \item[(C)] 4
+ \item[(D)] 8
+ \item[(E)] 10
+
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}{Problemas algorítmicos}
+ 
+\begin{itemize}
+ \item Neste tipo de problema, as tarefas não pedem explicitamente um algoritmo, mas os estudantes precisam desenvolver um procedimento sistemático para 
+ resolver. 
+ \item A eficiência do procedimento é avaliada indiretamente uma vez que se o estudante desenvolver uma solução rápida sobra mais tempo para os outros 
+ problemas.
+\end{itemize}
+ 
+ 
+ 
+ 
+\end{frame}
+
+
+\begin{frame}{OBI 2019 NJF2 - Distância entre palavras}
+Vamos definir três tipos de operações básicas:
+\begin{itemize}
+\item inserir uma letra em uma palavra;
+\item remover uma letra de uma palavra;
+\item substituir um letra de uma palavra.
+\end{itemize}
+
+Definimos também a distância entre duas palavras como o número mínimo de operações básicas
+para transformar a primeira palavra na segunda. Por exemplo, a distância entre as palavras maria
+e clara é 3:
+\begin{enumerate}
+\item remover a letra i: maria $\to$ mara
+\item substituir a letra m pela letra c: mara $\to$ cara
+\item inserir a letra l: cara $\to$ clara 
+
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}{OBI 2019 NJF2 - Distância entre palavras}
+\textbf{Questão 6.} Qual a distância entre poesia e
+poema?
+\begin{enumerate}[(A)]
+\item 1
+\item 2
+\item 3
+\item 4
+\item 5
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}{OBI2019-NJF2 Mesas}
+Uma nova sala de aula foi inaugurada, para estudo e exercícios em grupo. A sala de aula tem mesas
+para seis estudantes. Quando as mesas são colocadas juntas, numa única fila de mesas, elas podem
+ser usadas pelo número de estudantes mostrado na figura abaixo:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{mesas.jpeg}
+\label{fig:exampleFig2}
+\end{figure}
+    
+    
+\end{frame}
+
+
+\begin{frame}{OBI2019-NJF2 Mesas}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{mesas.jpeg}
+\label{fig:exampleFig2}
+\end{figure}
+    
+    
+\textbf{Questão 14.}  Quantos estudantes podem usar
+quatro mesas colocadas juntas como mostrado?
+
+\begin{enumerate}[(A)]
+    \item 15
+    \item 16
+    \item 18
+    \item 20
+    \item 24
+\end{enumerate}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{CATC\footnote{Computational and Algorithimic Thinking Competition} - Triângulo de Sierpinski}
+ 
+ 
+O triângulo de Sierpinski é um fractal que pode ser gerado como mostrado.
+
+\begin{figure}
+\includegraphics[scale=0.5]{Triangle.png} 
+\end{figure}
+
+
+
+Os cinco primeiros triângulos de Sierpinski são mostrados. Quantas
+triângulos apontadores (brancos) existem no sexto triângulo de Sierpinski? 
+
+A) Menos que 100\\  
+B) 100 - 149\\  
+C) 150 - 199\\
+D) 200 - 249\\ 
+E) Mais que 249
+\end{frame}
+
+
+\begin{frame}{CATC\footnote{Computational and Algorithimic Thinking Competition} - Triângulo de Sierpinski}
+
+\begin{figure}
+\includegraphics[scale=0.5]{Triangle.png} 
+\end{figure}
+
+{\small
+O primeiro triângulo de Sierpinski possui 0 triângulos brancos.\\
+O segundo triângulo de Sierpinski possui um triângulo branco.\\
+O terceiro triângulo de Sierpinski possui 4 triângulos brancos.\\
+O quarto triângulo de Sierpinski possui 13 triângulos brancos.\\
+O padrão é $w_{n + 1} = 3w_n + 1$, então existem $3 \times 13 + 1 = 40$ triângulos brancos no quinto triângulo de Sierpinski,
+e $3 \times 40 + 1 = 121$ triângulos brancos no sexto triângulo de Sierpinski. 
+}
+\end{frame}
+
+
+
+\end{document}
+ 
+ 
