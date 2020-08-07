@@ -1,0 +1,1745 @@
+\documentclass{beamer}
+\mode<presentation>
+
+
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ae}
+\usepackage{graphicx,color}
+\usepackage[all]{xy}
+\usepackage{empheq}
+\usepackage{fancybox}
+\usepackage{textcomp}
+\usepackage[all]{xy}
+\usepackage{textpos}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{enumerate}
+
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{calc}
+
+\tikzset{
+  treenode/.style = {shape=rectangle, rounded corners,
+                     draw, align=center,
+                     top color=white, bottom color=blue!20},
+  root/.style     = {treenode, font=\Large, bottom color=red!30},
+  env/.style      = {treenode, font=\ttfamily\normalsize},
+  dummy/.style    = {circle,draw}
+}
+
+\newcommand{\floor}[1]{$\lfloor$ #1 $\rfloor$}
+
+\newcommand\Fontvi{\fontsize{9}{7.2}\selectfont}
+
+\renewcommand{\arraystretch}{1.2}
+
+\usetheme{Boadilla}
+
+\newcommand{\PC}[1]{\ensuremath{\left(#1\right)}}
+
+
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}
+
+
+
+\title {Modalidade Iniciação - Nível 1 - Fase 2}
+
+\author[Projeto Semeando Talentos]{ Projeto Semeando Talentos$^{1}$  }
+
+\institute[UFC]{$^{1}$Universidade Federal do Ceará - Campus de Quixadá\\}
+
+\date{}
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{}
+    \small
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+
+\begin{frame}{Pilha de latas}
+
+João trabalha no supermercado, e seu gerente pediu que ele empilhasse latas de ervilhas como na figura abaixo.
+
+\begin{center}
+\includegraphics{Latas.png} 
+\end{center}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Pilha de latas}
+
+\textbf{Questão 8.} Quantos latas são necessárias para
+construir uma pilha de latas no formato acima
+que tenha a altura de cinco latas?
+\begin{enumerate}[(A)]
+\item 5
+\item 10
+\item 15
+\item 20
+\item 25
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}{Pilhas de latas}
+
+Vamos definir a função $latas(n)$ que calcula o número de latas necessárias em função da altura $n$ da pilha de latas. 
+
+\begin{equation}
+latas(n) = 1 + 2 + \ldots + n 
+\end{equation}
+
+Dessa maneira,
+
+\begin{equation}
+latas(5) = 1 + 2 + \ldots + 5 \pause = 15 \nonumber  
+\end{equation}
+
+
+\end{frame}
+
+
+\begin{frame}{Pilha de latas}
+\textbf{Questão 9.} Quantos latas são necessárias para
+construir uma pilha de latas no formato acima
+que tenha a altura de 17 latas?
+\begin{enumerate}[(A)]
+
+\item 87
+\item 97
+\item 105
+\item 135
+\item 153 
+
+\end{enumerate}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Pilha de latas}
+
+Neste caso, vamos tentar encontrar uma fórmula fechada para a função $latas(n)$
+
+
+
+
+\begin{tabular}{llllllllll}
+  & $latas(n)$          & = & $1$ &+& $2$ &+& $\ldots$ &+& $n$\\
+\pause
+  + & $latas(n)$ & = & $n$   &+& $(n-1)$ &+& $\ldots$ &+& $1$\\ 
+\hline
+\pause
+& 2$ \times latas(n)$ & = & $n+1$   &+& $(n+1)$ &+& $\ldots$ &+& $n+1$\\
+\pause
+& 2$ \times latas(n)$ & = & $n(n+1)$   \\
+\pause
+& $ latas(n)$ & = & $\dfrac{n(n+1)}{2}$   \\
+\end{tabular}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Pilha de latas}
+
+Utilizando a fórmula obtida, podemos calcular o número de latas necessárias para construir uma pilha de altura 17.
+
+\begin{equation}
+latas(17) \pause = \dfrac{17 (17 + 1)}{2} \pause = 17 \times 9 \pause = 153 \nonumber
+\end{equation}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{Jogos on line}
+\small{
+Cada dia da semana, de segunda a sexta-feira, após a escola e os deveres de casa, João entra na
+Internet para jogar um de três jogos, X, Y e Z. 
+
+Um dos jogos custa R\$ 1,00 por dia jogado, outro
+custa R\$ 1,20 por dia jogado, e o outro custa R\$ 1,50 por dia jogado. 
+
+João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana. 
+
+Ele também obedece às seguintes restrições:
+\begin{itemize}
+\item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+\item O jogo X custa mais do que o jogo Z.
+\item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+\item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Jogos on line}
+
+\textbf{Questão 10.} Qual das alternativas seguintes é
+um valor que João pode gastar com os jogos em
+uma semana?
+\begin{enumerate}[(A)]
+\item R\$ 4, 00
+\item R\$ 5, 00
+\item R\$ 6, 20
+\item R\$ 7, 50
+\item R\$ 8, 00
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}{Jogos on line}
+{\tiny
+
+Regras:\\
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.85\textwidth}
+\begin{itemize}
+\item João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana.
+\item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+\item O jogo X custa mais do que o jogo Z.
+\item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+\item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+\end{itemize}
+\end{minipage}
+}
+}
+
+%\textbf{Questão 10.} Qual das alternativas seguintes é um valor que João pode gastar com os jogos em
+%uma semana?
+
+Sabemos que  o jogo X custa mais do que o jogo Z, podemos fazer o seguinte digrama:
+
+\begin{tikzpicture}
+  [
+    grow                    = right,
+    sibling distance        = 6em,
+    level distance          = 10em,
+    edge from parent/.style = {draw, -latex},
+    every node/.style       = {font=\footnotesize},
+    sloped
+  ]
+  \node [env] {X}
+    child { node [env] {Z}
+      child { node [env] {Y}
+        child {
+	  node [dummy] {}
+	  edge from parent node [below] {Y = 1,5}
+        }
+	edge from parent node [below] {Z = 1,0} 
+      }
+      edge from parent node [below] {X = 1,2} 
+    }
+    child { node [env] {Z}
+      child{
+        node [env] {Y}
+        child{
+          node [dummy] {}
+	  edge from parent node [above] {Y = 1,2}
+        }
+        edge from parent node [above] {Z = 1,0}
+      }
+      child{
+        node [env] {Y}
+        child{
+          node [dummy] {}
+	  edge from parent node [above] {Y = 1,0}
+        }
+        edge from parent node [above] {Z = 1,2}
+      }
+      edge from parent node [above] {X = 1,5}
+    };
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}{Jogos on line}
+{\tiny
+
+Regras:\\
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.85\textwidth}
+\begin{itemize}
+\item João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana.
+\item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+\item O jogo X custa mais do que o jogo Z.
+\item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+\item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+\end{itemize}
+\end{minipage}
+}
+}
+
+%\textbf{Questão 10.} Qual das alternativas seguintes é um valor que João pode gastar com os jogos em
+%uma semana?
+
+Sabemos que João joga o jogo Z mais vezes por semana do que ele joga o jogo X, podemos fazer o seguinte digrama:
+
+\begin{tikzpicture}
+  [
+    grow                    = right,
+    sibling distance        = 6em,
+    level distance          = 10em,
+    edge from parent/.style = {draw, -latex},
+    every node/.style       = {font=\footnotesize},
+    sloped
+  ]
+  \node [env] {X}
+    child { node [env] {Z}
+      child{
+        node [env] {Y}
+        child{
+          node [dummy] {}
+	  edge from parent node [below] {2 vezes}
+        }
+        edge from parent node [above] {2 vezes}
+      }
+      child{
+        node [env] {Y}
+        child{
+          node [dummy] {}
+	  edge from parent node [below] {1 vez}
+        }
+        edge from parent node [above] {3 vezes}
+      }
+      edge from parent node [above] {1 vezes}
+    };
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}{Jogos on line}
+
+% {\tiny
+% 
+% Regras:\\
+% \noindent\fcolorbox{black}{yellow}{
+% \begin{minipage}{0.85\textwidth}
+% \begin{itemize}
+% \item João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana.
+% \item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+% \item O jogo X custa mais do que o jogo Z.
+% \item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+% \item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+% \end{itemize}
+% \end{minipage}
+% }
+% }
+
+%\textbf{Questão 10.} Qual das alternativas seguintes é um valor que João pode gastar com os jogos em
+%uma semana?
+
+Combinando os dois diagramas, obtemos:
+
+
+\begin{tikzpicture}
+  [
+    grow                    = right,
+    sibling distance        = 8em,
+    level distance          = 8em,
+    edge from parent/.style = {draw, -latex},
+    every node/.style       = {font=\footnotesize},
+    sloped,
+    level 1/.style={sibling distance=8em},
+    level 2/.style={sibling distance=5em},
+    level 3/.style={sibling distance=10em},
+    level 4/.style={sibling distance=12em}
+  ]
+  \node [env] {X}
+    child { node [env] {Z}
+      child{
+        node [env] {Y}
+        child{
+          node [dummy] { 6,2 }
+	  edge from parent node [above] {2 x (1,5)}
+        }
+        edge from parent node [above, align=center] {2 x  (1,0)}
+      }
+      child{
+        node [env] {Y}
+        child{
+          node [dummy] {5,7}
+	  edge from parent node [above] {1 x (1,5)}
+        }
+        edge from parent node [above, align=center ] {3 x (1,0)}
+      }
+      edge from parent node [above] {1 x (1,2) }
+    }
+    child{
+      node [env] {Z}
+      child{
+        node [env] {Y}
+        child{
+          node [dummy] { 5,9 }
+	  edge from parent node [above] {2 x (1,2)}
+        }
+        edge from parent node [above] {2 x  (1,0)}
+      }
+      child{
+        node [env] {Y}
+        child{
+          node [dummy] {5,1}
+	  edge from parent node [above] {1 x (1,0)}
+        }
+        edge from parent node [above] {3 x (1,2)}
+      }
+      edge from parent node [above] {1 x (1,5) }
+    };
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}{Jogos on line}
+
+\textbf{Questão 10.} Qual das alternativas seguintes é
+um valor que João pode gastar com os jogos em
+uma semana?
+\begin{enumerate}[(A)]
+\item R\$ 4, 00
+\item R\$ 5, 00
+\item \textbf{R\$ 6, 20}
+\item R\$ 7, 50
+\item R\$ 8, 00
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+
+\textbf{Questão 11.} Qual das alternativas abaixo poderia ser uma lista completa e correta dos jogos 
+que João joga a cada dia, listados de segunda-feira a sexta-feira?
+
+\begin{enumerate}[(A)]
+\item Y, Z, X, Y, Z
+\item Y, Z, Z, Y, X
+\item  Z, Z, X, X, Y
+\item Z, Z, X, X, Z
+\item Z, Z, X, Z, Y
+\end{enumerate}
+\end{frame}
+
+
+
+
+\begin{frame}{Jogos on line}
+{\tiny
+
+Regras:\\
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.85\textwidth}
+\begin{itemize}
+\item João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana.
+\item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+\item O jogo X custa mais do que o jogo Z.
+\item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+\item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+\item Na quinta-feira, João não pode jogar o jogo Z.
+\item Na quarta-feira, João não pode jogar um jogo que custa 1,0.
+ 
+\end{itemize}
+\end{minipage}
+}
+}
+
+{\tiny
+\textbf{Questão 11.} Qual das alternativas abaixo poderia ser uma lista completa e correta dos jogos 
+que João joga a cada dia, listados de segunda-feira a sexta-feira?
+
+\begin{enumerate}[(A)]
+\item Y, Z, X, Y, Z
+\item Y, Z, Z, Y, X [\textcolor{red}{Neste caso, Z deve custar R\$ 1,20 e X deve custar R\$ 1,00. Assim, o jogo X não custaria mais do que o jogo Z }]
+\item  Z, Z, X, X, Y [\textcolor{red}{João joga o jogo Z mais vezes por semana do que ele joga o jogo X.}]
+\item Z, Z, X, X, Z [\textcolor{red}{João joga o jogo Z mais vezes por semana do que ele joga o jogo X.}]
+\item Z, Z, X, Z, Y [\textcolor{red}{Neste caso, Z custaria R\$ 1,50, X custaria R\$ 1,20 e Y custaria R\$ 1,0. Assim, o jogo X não custaria mais do que o jogo Z}]
+\end{enumerate}
+}
+
+
+\end{frame}
+
+\begin{frame}{Jogos on-line}
+
+\textbf{Questão 12.} João não pode jogar o jogo que
+custa R\$ 1, 50 em qual dos seguintes dias?
+\begin{enumerate}[(A)]
+\item Segunda-feira
+\item Terça-feira
+\item Quarta-feira
+\item Quinta-feira
+\item Sexta-feira
+\end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}{Jogos on-line}
+
+{\tiny
+
+Regras:\\
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.85\textwidth}
+\begin{itemize}
+\item João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana.
+\item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+\item O jogo X custa mais do que o jogo Z.
+\item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+\item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+\end{itemize}
+\end{minipage}
+}
+}
+
+\hfill
+\hfill
+
+
+
+\pause 
+Se João joga o jogo que custa R\$ 1, 50 na sexta-feira, então o jogo que ele jogaria na quarta-feira deveria ser mais caro. De acordo com as regras,
+essa situação seria impossível.
+
+
+\end{frame}
+
+\begin{frame}{Jogos on-line}
+
+\textbf{Questão 12.} João não pode jogar o jogo que
+custa R\$ 1, 50 em qual dos seguintes dias?
+
+\begin{enumerate}[(A)]
+\item Segunda-feira
+\item Terça-feira
+\item Quarta-feira
+\item Quinta-feira
+\item \textbf{Sexta-feira}
+\end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}{Jogos on-line}
+
+\textbf{Questão 13.} Se o jogo Z custa R\$ 1,20, em qual dos seguintes dias João deve jogar o jogo Y?
+
+
+\begin{enumerate}[(A)]
+\item Segunda-feira
+\item Terça-feira
+\item Quarta-feira
+\item Quinta-feira
+\item Sexta-feira
+\end{enumerate}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{Jogos on-line}
+
+{\tiny
+
+Regras:\\
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.85\textwidth}
+\begin{itemize}
+\item João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana.
+\item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+\item O jogo X custa mais do que o jogo Z.
+\item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+\item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+\end{itemize}
+\end{minipage}
+}
+}
+
+
+{\small
+\hfill
+\textbf{Questão 13.} Se o jogo Z custa R\$ 1,20, em qual dos seguintes dias João deve jogar o jogo Y?
+
+
+\begin{enumerate}
+ \pause
+ \item Se o jogo $Z$ custa R\$ 1,20 então o jogo $X$ custa R\$ 1,50 e o jogo $Y$ custa R\$ 1,00.
+ \pause
+ \item O jogo $X$ é jogado no máximo uma vez.
+ \pause
+ \item Na quarta-feira, não podemos ter o jogo $X$ [o jogo X já é jogado às quinta-feira] e nem o jogo $Y$ [o joga da sexta precisa ser mais barato]. Logo, João joga o jogo $Z$ na quarta-feira.
+ \pause
+ \item Podemos concluir que o jogo $Y$ é jogado na sexta-feira.
+\end{enumerate}
+}
+
+
+\end{frame}
+
+
+\begin{frame}{Jogos on-line}
+
+\textbf{Questão 13.} Se o jogo Z custa R\$ 1,20, em qual dos seguintes dias João deve jogar o jogo Y?
+
+
+\begin{enumerate}[(A)]
+\item Segunda-feira
+\item Terça-feira
+\item Quarta-feira
+\item Quinta-feira
+\item \textbf{Sexta-feira}
+\end{enumerate}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Jogo on-line}
+
+\textbf{Questão 14.} João não pode jogar o jogo Z em qual dos seguintes dias?
+
+\begin{enumerate}[(A)]
+\item Segunda-feira
+\item Terça-feira
+\item Quarta-feira
+\item Quinta-feira
+\item Sexta-feira
+\end{enumerate}
+
+
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{Jogo on-line}
+
+{\tiny
+
+Regras:\\
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.85\textwidth}
+\begin{itemize}
+\item João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana.
+\item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+\item O jogo X custa mais do que o jogo Z.
+\item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+\item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+\end{itemize}
+\end{minipage}
+}
+}
+
+
+\hfill
+
+\textbf{Questão 14.} João não pode jogar o jogo Z em qual dos seguintes dias?
+
+\hfill
+
+Se João joga o jogo Z na quinta-feira, então o jogo Z custaria R\$ 1,50. Como o jogo X custa mais do que o jogo Z, então o jogo X deve custa mais do 
+que R\$ 1,50. Porém isso não é possível.
+
+
+\end{frame}
+
+\begin{frame}{Jogo on-line}
+
+\textbf{Questão 14.} João não pode jogar o jogo Z em qual dos seguintes dias?
+
+\begin{enumerate}[(A)]
+\item Segunda-feira
+\item Terça-feira
+\item Quarta-feira
+\item \textbf{Quinta-feira}
+\item Sexta-feira
+\end{enumerate}
+
+
+
+\end{frame}
+
+\begin{frame}{Jogo on-line}
+
+\textbf{Questão 15.}  Qual das alternativas seguintes
+poderia ser uma lista completa e correta dos dias
+em que João joga o jogo de R\$ 1,00?
+
+\begin{enumerate}[(A)]
+\item Segunda-feira
+\item Terça-feira
+\item Segunda-feira, terça-feira
+\item Segunda-feira, quarta-feira
+\item Segunda-feira, quinta-feira
+\end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}{Jogo on-line}
+
+{\tiny
+
+Regras:\\
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.85\textwidth}
+\begin{itemize}
+\item João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana.
+\item Às quintas-feiras, João joga o jogo que custa R\$ 1,50.
+\item O jogo X custa mais do que o jogo Z.
+\item O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras.
+\item João joga o jogo Z mais vezes por semana do que ele joga o jogo X.
+\end{itemize}
+\end{minipage}
+}
+}
+
+
+\hfill
+
+Qual das alternativas seguintes poderia ser uma lista completa e correta dos dias
+em que João joga o jogo de R\$ 1,00?
+
+
+\only<1>{
+
+\hfill
+
+\begin{tabular}{ccccc}
+Seg & Ter & Qua & Qui & Sex \\
+\hline
+    &     &     & \fcolorbox{black}{yellow}{1,0} &
+\end{tabular}
+
+\hfill
+
+Note O jogo que custa R\$ 1,00 não pode ser jogado na quinta.
+
+}
+
+
+\only<2>{
+
+\hfill
+
+\begin{tabular}{ccccc}
+Seg & Ter & Qua & Qui & Sex \\
+\hline
+    &     & \fcolorbox{black}{yellow}{1,0}    & 1,5 & \\
+\end{tabular}
+
+\hfill
+
+O jogo que que é jogado às quarta-feira é mais caro que o jogo jogado às sexta-feira. Logo, o jogo da quarta-feira deve custa mais do que R\$ 1,00.
+
+}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{Jogo on-line}
+ 
+
+Vamos verificar se o jogo que custa R\$ 1,00 pode ser jogado apenas às segundas-feiras.
+
+\begin{tabular}{ccccc}
+Seg & Ter & Qua & Qui & Sex \\
+\hline
+\fcolorbox{black}{yellow}{1,0}    &     & 1,5   & 1,5 & 1,2\\
+\end{tabular}
+
+\hfill
+
+Neste caso, o jogo X pode custar R\$ 1,20 ou R\$ 1,50. 
+
+\begin{enumerate}
+ \item Se o jogo X custar R\$ 1,20 então o jogo Z deveria custar R\$ 1,00 e a lista não estaria completa.
+ \item Se o jogo X custa R\$ 1,50 então o jogo Z deveria custar R\$ 1,20. Neste caso, o jogo Z deveria ser jogado pelo menos três vezes. Só que o 
+ máximo de vezes que o jogo Z poderia ser jogado é duas vezes.
+\end{enumerate}
+
+Logo, o jogo que custa R\$ 1,00 não pode ser jogado somente às segunda-feiras.
+
+\end{frame}
+
+
+\begin{frame}{Jogo on-line}
+ 
+
+Vamos verificar se o jogo que custa R\$ 1,00 pode ser jogado apenas às segundas-feiras e terças-feiras.
+
+\begin{tabular}{ccccc}
+Seg & Ter & Qua & Qui & Sex \\
+\hline
+\fcolorbox{black}{yellow}{1,0}    & \fcolorbox{black}{yellow}{1,0}    & 1,5   & 1,5 & 1,2\\
+Z & Z & Y & Y & X\\
+\end{tabular}
+
+\hfill
+
+Observe que essa configuração é uma configuração que satisfaz todas as regras.
+
+\end{frame}
+
+\begin{frame}{Jogo on-line}
+
+\textbf{Questão 15.}  Qual das alternativas seguintes
+poderia ser uma lista completa e correta dos dias
+em que João joga o jogo de R\$ 1,00?
+
+\begin{enumerate}[(A)]
+\item Segunda-feira
+\item Terça-feira
+\item \textbf{Segunda-feira, terça-feira}
+\item Segunda-feira, quarta-feira
+\item Segunda-feira, quinta-feira
+\end{enumerate}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Vila}
+
+Oito famílias (A, B, C, D, E, F, G e H) alugaram uma vila
+com oito casas para passar o verão. A vila é composta de
+uma rua com duas fileiras de casas, cada uma com quatro
+casas, conforme a figura ao lado. Uma das fileiras é chamada
+de fileira da direita, e outra é chamada de fileira da esquerda.
+
+\pause
+Duas casas são vizinhas de lado se estão na mesma fileira e
+têm números consecutivos. 
+
+\pause
+Cada casa de uma fileira tem uma casa vizinha de frente, da outra fileira:  casas 1 e 5 são vizinhas de frente, as casas 2 e 6 são vizinhas de 
+frente, as casas 3 e 7 são vizinhas de frente, as casas 4 e 8 são vizinhas de frente. 
+
+
+
+\end{frame}
+\begin{frame}{Vila}
+
+Cada família vai ocupar uma casa, e as seguintes condições devem ser obedecidas:
+
+\begin{multicols}{2}
+
+\small
+\begin{itemize}
+    \item C e F não podem ser vizinhas de lado 
+    \item G e H devem ser vizinhas de lado.
+    \item F deve ocupar a casa 6.
+    \item Se E e H forem vizinhas de frente, então A deve ocupar a casa 3.
+    \item Se B ocupar uma casa na fileira da direita, C deve ocupar uma casa na fileira da esquerda
+    
+\end{itemize}
+
+\columnbreak
+
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{Vila.png}
+\label{fig:exampleFig2}
+\end{figure}
+
+\end{multicols}
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vila}
+
+\textbf{Questão 16.} Em nenhuma ordem particular,
+qual das alternativas abaixo é uma lista de famílias que podem ocupar uma casa na fileira da direita?
+
+\begin{enumerate} [(A)]
+\item A, B, D, E
+\item A, C, G, H
+\item B, C, G, H
+\item B, D, E, H
+\item D, F, G, H
+
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Vila}
+
+\begin{multicols}{2}
+
+\small
+\begin{enumerate}
+    \item C e F não podem ser vizinhas de lado 
+    \item G e H devem ser vizinhas de lado.
+    \item F deve ocupar a casa 6.
+    \item Se E e H forem vizinhas de frente, então A deve ocupar a casa 3.
+    \item Se B ocupar uma casa na fileira da direita, C deve ocupar uma casa na fileira da esquerda
+    
+\end{enumerate}
+
+\columnbreak
+
+\only<1>{
+
+{\tiny
+\textbf{Questão 16.} Em nenhuma ordem particular,
+qual das alternativas abaixo é uma lista de famílias que podem ocupar uma casa na fileira da direita?
+
+(A) A, B, D, E
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${A}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${B}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${D}^{3}$ \\
+\hline
+    ${\quad}^{8}$  & ${E}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 2, G e G devem ocupar as casas 7 e 8.
+\item Logo, C deve ocupar a casa 5. (Contradição)
+\end{itemize}
+}
+
+}
+
+\only<2>{
+
+{\tiny
+\textbf{Questão 16.} Em nenhuma ordem particular,
+qual das alternativas abaixo é uma lista de famílias que podem ocupar uma casa na fileira da direita?
+
+(C) B, C, G, H
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${B}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${C}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${G}^{3}$ \\
+\hline
+    ${\quad}^{8}$  & ${H}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 5, C deveria ocupar uma casa na fileira da esquerda. (Contradição)
+\end{itemize}
+}
+
+}
+
+
+\only<3>{
+
+{\tiny
+\textbf{Questão 16.} Em nenhuma ordem particular,
+qual das alternativas abaixo é uma lista de famílias que podem ocupar uma casa na fileira da direita?
+
+(D) B, D, E, H
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${B}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${D}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${E}^{3}$ \\
+\hline
+    ${\quad}^{8}$  & ${H}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 2, G deveria ocupar a casa 3. (Contradição)
+\end{itemize}
+}
+
+}
+
+
+\only<4>{
+
+{\tiny
+\textbf{Questão 16.} Em nenhuma ordem particular,
+qual das alternativas abaixo é uma lista de famílias que podem ocupar uma casa na fileira da direita?
+
+(E) D, F, G, H
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${D}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${F}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${G}^{3}$ \\
+\hline
+    ${\quad}^{8}$  & ${H}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 3, F deveria ocupar a casa 6. (Contradição)
+\end{itemize}
+}
+
+}
+
+
+\only<5>{
+
+{\tiny
+\textbf{Questão 16.} Em nenhuma ordem particular,
+qual das alternativas abaixo é uma lista de famílias que podem ocupar uma casa na fileira da direita?
+
+(B) A, C, G, H
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${A}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${C}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${G}^{3}$ \\
+\hline
+    ${\quad}^{8}$  & ${H}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 4, E deve ocupar a casa 5 e 7.
+\item Todas as outras regras são válidas.
+\end{itemize}
+}
+
+}
+
+
+\end{multicols}
+
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vila}
+
+\textbf{Questão 16.} Em nenhuma ordem particular,
+qual das alternativas abaixo é uma lista de famílias que podem ocupar uma casa na fileira da direita?
+
+\begin{enumerate} [(A)]
+\item A, B, D, E
+\item \textbf{A, C, G, H}
+\item B, C, G, H
+\item B, D, E, H
+\item D, F, G, H
+
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Vila}
+
+\textbf{Questão 17.} Se D ocupar a casa 8, qual das
+alternativas seguintes apresenta três famílias que
+devem necessariamente ocupar uma casa na fileira da direita?
+
+\begin{enumerate} [(A)]
+\item A, G, H
+\item A, E, C
+\item B, E, H
+\item C, G, H
+\item E, G, H
+
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Vila}
+
+\begin{multicols}{2}
+
+\small
+\begin{itemize}
+    \item C e F não podem ser vizinhas de lado 
+    \item G e H devem ser vizinhas de lado.
+    \item F deve ocupar a casa 6.
+    \item Se E e H forem vizinhas de frente, então A deve ocupar a casa 3.
+    \item Se B ocupar uma casa na fileira da direita, C deve ocupar uma casa na fileira da esquerda
+    
+\end{itemize}
+
+\columnbreak
+
+
+{\tiny
+\textbf{Questão 17.} Se D ocupar a casa 8, qual das
+alternativas seguintes apresenta três famílias que
+devem necessariamente ocupar uma casa na fileira da direita?
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${\quad}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${\quad}^{3}$ \\
+\hline
+    ${D}^{8}$  & ${\quad}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\pause 
+\item Como G e H devem ser vizinhas de lado, então G e H devem ocupar uma casa na fileira da direita. 
+\pause
+\item Como C e F não podem ser vizinhos de lado, então C deve ocupar uma casa na fileira da direita.
+\end{itemize}
+}
+
+\end{multicols}
+
+
+\end{frame}
+
+
+\begin{frame}{Vila}
+
+\textbf{Questão 17.} Se D ocupar a casa 8, qual das
+alternativas seguintes apresenta três famílias que
+devem necessariamente ocupar uma casa na fileira da direita?
+
+\begin{enumerate} [(A)]
+\item A, G, H
+\item A, E, C
+\item B, E, H
+\item \textbf{C, G, H}
+\item E, G, H
+
+\end{enumerate}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Vila}
+
+\textbf{Questão 18.} Se B ocupar a casa 2, e C e G forem vizinhas de frente, qual dos famílias abaixo poderia ocupar a casa 7?
+
+
+\begin{enumerate} [(A)]
+\item A
+\item C
+\item E
+\item F
+\item G
+
+\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Vila}
+
+\begin{multicols}{2}
+
+\small
+\begin{enumerate}
+    \item C e F não podem ser vizinhas de lado 
+    \item G e H devem ser vizinhas de lado.
+    \item F deve ocupar a casa 6.
+    \item Se E e H forem vizinhas de frente, então A deve ocupar a casa 3.
+    \item Se B ocupar uma casa na fileira da direita, C deve ocupar uma casa na fileira da esquerda
+    \item C e G forem vizinhas de frente
+\end{enumerate}
+
+\columnbreak
+
+
+{\tiny
+
+\textbf{Questão 18.} Se B ocupar a casa 2, e C e G forem vizinhas de frente, qual dos famílias abaixo poderia ocupar a casa 7?
+
+\only<1>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${B}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${\quad}^{3}$ \\
+\hline
+    ${\quad}^{8}$  & ${\quad}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 5, então C deve ocupar uma casa da esquerda.
+\end{itemize}
+}
+
+\only<2>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${B}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${\quad}^{3}$ \\
+\hline
+    ${C}^{8}$  & ${\quad}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\pause 
+\item Pela regra 5, então C deve ocupar uma casa da esquerda.
+\item Pela regra 1, então C deve ocupar a casa 8.
+\end{itemize}
+}
+
+\only<3>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${B}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${\quad}^{3}$ \\
+\hline
+    ${C}^{8}$  & ${G}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\pause 
+\item Pela regra 5, então C deve ocupar uma casa da esquerda.
+\item Pela regra 1, então C deve ocupar a casa 8.
+\item Pela regra 6, então G deve ocupar a casa 4
+\end{itemize}
+}
+
+
+\only<4>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${B}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${H}^{3}$ \\
+\hline
+    ${C}^{8}$  & ${G}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\pause 
+\item Pela regra 5, então C deve ocupar uma casa da esquerda.
+\item Pela regra 1, então C deve ocupar a casa 8.
+\item Pela regra 6, então G deve ocupar a casa 4.
+\item Pela regra 2, então H deve ocupar a casa 3.
+\end{itemize}
+}
+
+
+\only<5>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${B}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${H}^{3}$ \\
+\hline
+    ${C}^{8}$  & ${G}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\pause 
+\item Pela regra 5, então C deve ocupar uma casa da esquerda.
+\item Pela regra 1, então C deve ocupar a casa 8.
+\item Pela regra 6, então G deve ocupar a casa 4.
+\item Pela regra 2, então H deve ocupar a casa 3.
+\item Se E ocupa a casa 7 e regra 4 então A deve ocupar a casa 3. (Contradição)  
+\end{itemize}
+}
+
+
+\only<6>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${B}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${H}^{3}$ \\
+\hline
+    ${C}^{8}$  & ${G}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\pause 
+\item Pela regra 5, então C deve ocupar uma casa da esquerda.
+\item Pela regra 1, então C deve ocupar a casa 8.
+\item Pela regra 6, então G deve ocupar a casa 4.
+\item Pela regra 2, então H deve ocupar a casa 3.
+\item Se E ocupa a casa 7 e regra 4 então A deve ocupar a casa 3. (Contradição)
+\item Assim, E não pode ocupar a casa 7.  
+\item Logo, a casa 7 pode ser ocupada por A e D.
+\end{itemize}
+}
+
+}
+
+\end{multicols}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Vila}
+
+\textbf{Questão 18.} Se B ocupar a casa 2, e C e G forem vizinhas de frente, qual dos famílias abaixo poderia ocupar a casa 7?
+
+
+\begin{enumerate} [(A)]
+\item \textbf{A}
+\item C
+\item E
+\item F
+\item G
+
+\end{enumerate}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Vila}
+
+\textbf{Questão 19.} Se D ocupar a casa 4 e A ocupar a casa 5, qual das afirmativas abaixo não pode ser verdadeira?
+
+
+\begin{enumerate} [(A)]
+    \item B ocupa a casa 3.
+    \item C e E ocupam casas vizinhas de frente.
+    \item D e E ocupam casas vizinhas de lado.
+    \item G ocupa a casa 7.
+    \item H ocupa a casa 1.
+\end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}{Vila}
+
+\begin{multicols}{2}
+
+\small
+\begin{enumerate}
+    \item C e F não podem ser vizinhas de lado 
+    \item G e H devem ser vizinhas de lado.
+    \item F deve ocupar a casa 6.
+    \item Se E e H forem vizinhas de frente, então A deve ocupar a casa 3.
+    \item Se B ocupar uma casa na fileira da direita, C deve ocupar uma casa na fileira da esquerda
+\end{enumerate}
+
+\columnbreak
+
+
+{\tiny
+
+\textbf{Questão 19.} Se D ocupar a casa 4 e A ocupar a casa 5, qual das afirmativas abaixo não pode ser verdadeira?
+
+\only<1>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${A}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${\quad}^{2}$ \\
+\hline
+    ${G}^{7}$  & ${\quad}^{3}$ \\
+\hline
+    ${H}^{8}$  & ${D}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Se G ocupar a casa 7 então H ocuparia a casa 8.
+\end{itemize}
+}
+
+
+\only<2>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${A}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${\quad}^{2}$ \\
+\hline
+    ${G}^{7}$  & ${\quad}^{3}$ \\
+\hline
+    ${H}^{8}$  & ${D}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Se G ocupar a casa 7 então H ocuparia a casa 8.
+\item Logo, B e C ocupariam casas na fileira da direita. Isso tornaria a regra 5 seria falsa.
+\end{itemize}
+}
+
+
+}
+
+\end{multicols}
+
+
+\end{frame}
+
+\begin{frame}{Vila}
+
+\textbf{Questão 19.} Se D ocupar a casa 4 e A ocupar a casa 5, qual das afirmativas abaixo não pode ser verdadeira?
+
+
+\begin{enumerate} [(A)]
+    \item B ocupa a casa 3.
+    \item C e E ocupam casas vizinhas de frente.
+    \item D e E ocupam casas vizinhas de lado.
+    \item \textbf{G ocupa a casa 7.}
+    \item H ocupa a casa 1.
+\end{enumerate}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Vila}
+
+\textbf{Questão 20.} Se D ocupar a casa 2 e E ocupar a casa 3, B poderia ocupar a casa:
+
+\begin{enumerate} [(A)]
+    \item 1
+    \item 4
+    \item 5
+    \item 7
+    \item 8
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Vila}
+
+\begin{multicols}{2}
+
+\small
+\begin{enumerate}
+    \item C e F não podem ser vizinhas de lado 
+    \item G e H devem ser vizinhas de lado.
+    \item F deve ocupar a casa 6.
+    \item Se E e H forem vizinhas de frente, então A deve ocupar a casa 3.
+    \item Se B ocupar uma casa na fileira da direita, C deve ocupar uma casa na fileira da esquerda
+\end{enumerate}
+
+\columnbreak
+
+
+{\tiny
+
+\textbf{Questão 20.} Se D ocupar a casa 2 e E ocupar a casa 3, B poderia ocupar a casa:
+
+\only<1>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${D}^{2}$ \\
+\hline
+    ${\quad}^{7}$  & ${E}^{3}$ \\
+\hline
+    ${\quad}^{8}$  & ${\quad}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 2, concluímos que G e H devem ocupar as casas 7 e 8.
+\end{itemize}
+}
+
+\only<2>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${D}^{2}$ \\
+\hline
+    ${H}^{7}$  & ${E}^{3}$ \\
+\hline
+    ${G}^{8}$  & ${\quad}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 2, concluímos que G e H devem ocupar as casas 7 e 8.
+\item Considere que  H ocupe a casa 7 e G ocupe a casa 8. Pela regra 4, então A deve ocupar a casa 3. (Contradição) 
+\end{itemize}
+}
+
+
+\only<3>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${\quad}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${D}^{2}$ \\
+\hline
+    ${G}^{7}$  & ${E}^{3}$ \\
+\hline
+    ${H}^{8}$  & ${\quad}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 2, concluímos que G e H devem ocupar as casas 7 e 8.
+\item Considere que  H ocupe a casa 7 e G ocupe a casa 8. Pela regra 4, então A deve ocupar a casa 3. (Contradição) 
+\item Considere que  H ocupe a casa 8 e G ocupe a casa 7.
+\item Considere que B ocupe as casas 1 ou 4. Pela regra 5, C deveria ocupar a casa 5.(Contradição) 
+
+\end{itemize}
+}
+
+\only<4>{
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+E                  & D            \\
+\hline
+    ${B}^{5}$  & ${\quad}^{1}$ \\
+\hline
+    ${F}^{6}$  & ${D}^{2}$ \\
+\hline
+    ${G}^{7}$  & ${E}^{3}$ \\
+\hline
+    ${H}^{8}$  & ${\quad}^{4}$ \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Pela regra 2, concluímos que G e H devem ocupar as casas 7 e 8.
+\item Considere que  H ocupe a casa 7 e G ocupe a casa 8. Pela regra 4, então A deve ocupar a casa 3. (Contradição) 
+\item Considere que  H ocupe a casa 8 e G ocupe a casa 7.
+\item Considere que B ocupe as casas 1 ou 4. Pela regra 5, C deveria ocupar a casa 5.(Contradição) 
+\item Logo, B deve ocupar a casa 5. 
+\end{itemize}
+}
+
+
+}
+
+\end{multicols}
+
+
+\end{frame}
+
+
+\begin{frame}{Vila}
+
+\textbf{Questão 20.} Se D ocupar a casa 2 e E ocupar a casa 3, B poderia ocupar a casa:
+
+\begin{enumerate} [(A)]
+    \item 1
+    \item 4
+    \item \textbf{5}
+    \item 7
+    \item 8
+\end{enumerate}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+ 
+ 

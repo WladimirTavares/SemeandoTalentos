@@ -1,0 +1,11 @@
+\frametitle{Pilha de latas}
+
+Utilizando a fórmula obtida, podemos calcular o número de latas necessárias para construir uma pilha de altura 17.
+
+\begin{equation}
+latas(17) \pause = \dfrac{17 (17 + 1)}{2} \pause = 17 \times 9 \pause = 153 \nonumber
+\end{equation}
+
+
+
+
