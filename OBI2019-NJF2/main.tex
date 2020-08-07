@@ -1,0 +1,2057 @@
+\documentclass{beamer}
+\mode<presentation>
+
+
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ae}
+\usepackage{graphicx,color}
+\usepackage[all]{xy}
+\usepackage{empheq}
+\usepackage{fancybox}
+\usepackage{textcomp}
+\usepackage[all]{xy}
+\usepackage{textpos}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{enumerate}
+
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{calc}
+
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+  arn_n/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+    fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+  arn_r/.style = {treenode, circle, red, draw=red, 
+    text width=1.5em, very thick},% arbre rouge noir, noeud rouge
+  arn_x/.style = {treenode, rectangle, draw=black,
+    minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
+}
+
+\newcommand{\floor}[1]{$\lfloor$ #1 $\rfloor$}
+
+\newcommand\Fontvi{\fontsize{9}{7.2}\selectfont}
+
+
+
+\usetheme{Boadilla}
+
+\newcommand{\PC}[1]{\ensuremath{\left(#1\right)}}
+
+
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}
+
+
+
+\title {Modalidade Iniciação - Nível Júnior - Fase 2}
+
+\author[Projeto Semeando Talentos]{ Projeto Semeando Talentos$^{1}$  }
+
+\institute[UFC]{$^{1}$Universidade Federal do Ceará - Campus de Quixadá\\}
+
+\date{}
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{}
+    \small
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+
+\begin{frame}{Computadores }
+
+\small{
+Oito alunos foram selecionados para a equipe de Programação de Computadores da escola, e treinarão aos sábados de manhã por um mês. 
+
+Cada aluno vai treinar usando um computador da escola, por duas horas seguidas. Como eles têm outras atividades no sábado de manhã, o professor pediu que cada um marcasse numa tabela um
+período que poderia treinar. A tabela abaixo mostra o planejamento dos alunos, onde um X indica
+que o aluno vai treinar naquele horário.
+}
+
+\small{
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+      & 08:00 & 09:00 & 10:00 & 11:00 & 12:00 & 13:00 \\
+\hline
+Aline &  x     &   x    &       &       &       &       \\
+\hline
+Pedro &       &       &       &   x    &  x     &       \\
+\hline
+Clara &       &       &  x     &  x     &       &       \\
+\hline
+Joana &       &       &       &    x   &  x     &       \\
+\hline
+André &       &       &       &       &    x   &  x     \\
+\hline
+Marcos &       &   x    &  x     &       &       &       \\
+\hline
+João   &       &       &   x    &   x    &       &       \\
+\hline
+Sílvia &       &       &       &   x    &   x    &       \\
+\hline
+\end{tabular}
+}
+
+
+\end{frame}
+
+
+\begin{frame}{Computadores}
+
+\textbf{Questão 1.} Qual o menor número de computadores necessários para que todos os alunos trabalhem de acordo com o planejamento acima?
+
+\begin{enumerate} [(A)]
+\item 3
+\item 4
+\item 5
+\item 6
+\item 7
+\end{enumerate}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Computadores}
+
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+      & 08:00 & 09:00 & 10:00 & 11:00 & 12:00 & 13:00 \\
+\hline
+Aline &  x     &   x    &       &       &       &       \\
+\hline
+Pedro &       &       &       &   x    &  x     &       \\
+\hline
+Clara &       &       &  x     &  x     &       &       \\
+\hline
+Joana &       &       &       &    x   &  x     &       \\
+\hline
+André &       &       &       &       &    x   &  x     \\
+\hline
+Marcos &       &   x    &  x     &       &       &       \\
+\hline
+João   &       &       &   x    &   x    &       &       \\
+\hline
+Sílvia &       &       &       &   x    &   x    &       \\
+\hline
+Computadores     &  \pause 1     & \pause 2     & \pause 3      &  \pause 5     &  \pause 4      &  \pause 1     \\
+\hline
+\end{tabular}
+
+ 
+\end{frame}
+
+
+\begin{frame}{Computadores}
+
+\textbf{Questão 1.} Qual o menor número de computadores necessários para que todos os alunos trabalhem de acordo com o planejamento acima?
+
+\begin{enumerate} [(A)]
+\item 3
+\item 4
+\textbf{\item 5}
+\item 6
+\item 7
+\end{enumerate}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Computadores}
+
+\textbf{Questão 2.} Se os alunos não tivessem restrição
+de horário e pudessem ser alocados para iniciar
+o seu período de treinamento em qualquer horário, qual seria o menor número de computadores
+necessários?
+\begin{enumerate}[(A)]
+\item 3
+\item 4
+\item 5
+\item 6
+\item 7
+
+\end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}{Computadores}
+
+A melhor alocação dos alunos poderia ser obtida distribuindo de maneira igualitária entre os horários. No nosso exemplo, temos 8 alunos e cada
+aluno precisa estudar duas horas seguidas. Logo, temos no total 16 horas (TotalHoras) que precisam ser distribuídas. Temos 6 horários disponíveis (NumHorarios). Então,
+o menor número de computadores (Computadores) necessários é igual:
+
+\pause
+\begin{equation}
+Computadores = \displaystyle \Bigl \lceil \dfrac{TotalHoras}{NumHorarios} \Bigr \rceil 
+\end{equation}
+
+\pause
+No nosso exemplo, 
+
+\begin{equation}
+Computadores = \displaystyle \Bigl \lceil \dfrac{16}{6} \Bigr \rceil  = \Bigl \lceil 2.66 \Bigr \rceil = 3
+\end{equation}
+
+\pause
+Observe que este é um limite inferior para o número de computadores utilizado. Observe que pode não existir uma distribuição que utilize esse número de computadores.
+Mas se uma distribuição utiliza essa quantidade de computadores, ela será a melhor possível.
+
+
+
+\end{frame}
+
+
+\begin{frame}{Computadores}
+
+Vamos tentar construir uma distribuição dos horários de maneira mais igualitária possível.
+
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+      & 08:00 & 09:00 & 10:00 & 11:00 & 12:00 & 13:00 \\
+\hline
+\pause 
+Aline &  x     &   x    &       &       &       &       \\
+\hline
+\pause
+Pedro &       &       &    x   &   x    &       &       \\
+\hline
+\pause
+Clara &       &       &       &       &   x    &  x     \\
+\hline
+\pause
+Joana &  x     &  x     &       &       &       &       \\
+\hline
+\pause
+André &       &       &    x   &   x    &       &       \\
+\hline
+\pause
+Marcos &       &       &       &       &    x   &  x     \\
+\hline
+\pause
+João   &  x     &  x     &       &       &       &       \\
+\hline
+\pause
+Sílvia &       &       &    x   &   x    &       &       \\
+\hline
+Computadores     &  \pause 3     & \pause 3     & \pause 3      &  \pause 3     &  \pause 2      &  \pause 2     \\
+\hline
+\end{tabular}
+
+ 
+\end{frame}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Almoço}
+
+
+Para comemorar o aniversário de Cláudio, ele e mais quatro amigos: Alberto, Bruno, Dino e Eurico foram almoçar juntos no restaurante da escola. 
+As mesas são redondas e acomodam exatamente cinco pessoas. Cláudio e Dino sentam-se um ao lado do outro. Alberto e Bruno não sentam-se um
+ao lado do outro. \\
+
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+
+\textbf{Questão 3.} Os dois amigos sentados ao lado de Eurico são:
+
+\begin{enumerate}[(A)]
+\item Alberto e Bruno
+\item  Cláudio e Dino
+\item  Dino e Bruno
+\item  Cláudio e Alberto
+\item  Alberto e Dino
+\end{enumerate}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Problema Almoço}
+
+
+\begin{tabular}{cc}
+
+\only <1->{
+\begin{tikzpicture}
+
+%\draw[help lines] (-2,-2) grid (2,2);
+
+\draw (0,0) circle (2cm);
+
+\draw (0,0) circle (1cm);
+
+\foreach \x in {0,1,2,...,5}{
+\draw [line width= 2pt] (72*\x:1) -- (72*\x:2);
+}
+
+\pause
+\node at (36:1.5) {$C$};
+\pause
+\node at (72+36:1.5) {$D$};
+\pause 
+\node at (72+72+36:1.5) {$A$};
+\pause 
+\node at (72+72+72+36:1.5) {$E$};
+\pause 
+\node at (72+72+72+72+36:1.5) {$B$};
+
+
+\end{tikzpicture}
+}
+
+& 
+
+\only <7->{
+\pause 
+\begin{tikzpicture}
+
+%\draw[help lines] (-2,-2) grid (2,2);
+
+\draw (0,0) circle (2cm);
+
+\draw (0,0) circle (1cm);
+
+\foreach \x in {0,1,2,...,5}{
+\draw [line width= 2pt] (72*\x:1) -- (72*\x:2);
+}
+
+\pause
+\node at (36:1.5) {$C$};
+\pause
+\node at (72+36:1.5) {$D$};
+\pause 
+\node at (72+72+36:1.5) {$B$};
+\pause 
+\node at (72+72+72+36:1.5) {$E$};
+\pause 
+\node at (72+72+72+72+36:1.5) {$A$};
+
+
+\end{tikzpicture}
+}
+
+\end{tabular}
+
+\end{frame}
+
+
+\begin{frame}
+
+\textbf{Questão 3.} Os dois amigos sentados ao lado de Eurico são:
+
+\begin{enumerate}[(A)]
+\item  \textbf{Alberto e Bruno}
+\item  Cláudio e Dino
+\item  Dino e Bruno
+\item  Cláudio e Alberto
+\item  Alberto e Dino
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+
+\textbf{Questão 4.} Qual das alternativas abaixo não
+pode ser verdadeira?
+
+\begin{enumerate}[(A)]
+\item Bruno senta ao lado de Dino.
+\item Dino senta ao lado de Alberto.
+\item Alberto senta ao lado de Cláudio.
+\item Cláudio senta ao lado de Bruno.
+\item \textbf{Dino senta ao lado de Eurico.}
+\end{enumerate}
+
+\pause 
+Comentário: Se Dino sentar ao lado de Eurico, então Alberto e Bruno vão ficar sentados um ao lado do outro. 
+
+\end{frame}
+
+
+
+\begin{frame}{Senha}
+
+Vó Chica guardou suas jóias em um cofre com senha eletrônica. O cofre somente pode ser aberto
+com uma senha de nove dígitos. Vó Chica quer abrir o cofre, mas não se lembra da senha. Ela se
+lembra, entretanto, de alguns fatos sobre a senha:
+\begin{itemize}
+\item Os únicos dígitos usados na senha são 2, 6, 7 e 9.
+\item O dígito com o maior valor é o dígito usado menos vezes na senha.
+\item O dígito com o menor valor é o dígito usado mais vezes na senha.
+\item A senha é a mesma se lida da direita para a esquerda ou da esquerda para a direita.
+\item Dígitos vizinhos na senha são diferentes.
+\item O dígito mais à direita é ímpar.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Senha}
+
+\begin{multicols}{2}
+
+\Fontvi{
+\begin{enumerate}
+
+\item Os únicos dígitos usados na senha são 2, 6, 7 e 9.
+\item O dígito com o maior valor é o dígito usado menos vezes na senha.
+\item O dígito com o menor valor é o dígito usado mais vezes na senha.
+\item A senha é a mesma se lida da direita para a esquerda ou da esquerda para a direita.
+\item Dígitos vizinhos na senha são diferentes.
+\item O dígito mais à direita é ímpar.
+\end{enumerate}
+}
+
+
+
+\columnbreak
+
+
+
+\Fontvi{
+\textbf{Questão 5.} Qual das alternativas abaixo é a senha do cofre de Vó Chica?
+
+\begin{enumerate}[(A)]
+\item<1-> 2 6 2 7 9 2 6 2 7 [Regra 4]
+\item<2-> 2 6 9 2 7 2 9 6 2 [Regra 4]
+\item<3-> 7 2 2 6 9 6 2 2 7 [Regra 5]
+\item<4-> 7 2 6 2 9 2 6 2 7
+\item<5-> 9 2 7 2 6 2 7 2 9 [Regra 2]
+\end{enumerate}
+}
+
+
+\end{multicols}
+
+
+\end{frame}
+
+\begin{frame}{Distância entre palavras}
+Vamos definir três tipos de operações básicas:
+\begin{itemize}
+\item inserir uma letra em uma palavra;
+\item remover uma letra de uma palavra;
+\item substituir um letra de uma palavra.
+\end{itemize}
+
+Definimos também a distância entre duas palavras como o número mínimo de operações básicas
+para transformar a primeira palavra na segunda. Por exemplo, a distância entre as palavras maria
+e clara é 3:
+\begin{enumerate}
+\item remover a letra i: maria $\to$ mara
+\item substituir a letra m pela letra c: mara $\to$ cara
+\item inserir a letra l: cara $\to$ clara 
+
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+\textbf{Questão 6.} Qual a distância entre poesia e
+poema?
+\begin{enumerate}[(A)]
+\item 1
+\item 2
+\item 3
+\item 4
+\item 5
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+\begin{tikzpicture}
+
+\node at (0,0) {p};
+\node at (1,0) {o};
+\node at (2,0) {e};
+\node at (3,0) {s};
+\node at (4,0) {i};
+\node at (5,0) {a};
+
+
+\node at (0,-1) {p};
+\node at (1,-1) {o};
+\node at (2,-1) {e};
+\node at (3,-1) {m};
+\node at (4,-1) {a};
+
+\pause
+\draw (0,0-0.1) -- (0,-1+0.1);
+
+\pause
+\draw (1,0-0.1) -- (1,-1+0.1);
+
+\pause
+\draw (2,0-0.1) -- (2,-1+0.1);
+
+\pause
+\draw (5,0-0.1) -- (4,-1+0.1);
+
+
+\end{tikzpicture}
+\end{center}
+
+\only<5>{
+A distância entre si e m é 2.
+}
+
+
+\end{frame}
+
+\begin{frame}
+\textbf{Questão 7.} Qual a distância entre pescada e escala?
+\begin{enumerate}[(A)]
+\item 1
+\item 2
+\item 3
+\item 4
+\item 5
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+\begin{tikzpicture}
+
+\node at (0,0) {p};
+\node at (1,0) {e};
+\node at (2,0) {s};
+\node at (3,0) {c};
+\node at (4,0) {a};
+\node at (5,0) {d};
+\node at (6,0) {a};
+
+
+
+\node at (0,-1) {e};
+\node at (1,-1) {s};
+\node at (2,-1) {c};
+\node at (3,-1) {a};
+\node at (4,-1) {l};
+\node at (5,-1) {a};
+
+
+\pause
+\draw (1,0-0.1) -- (0,-1+0.1);
+
+\pause
+\draw (2,0-0.1) -- (1,-1+0.1);
+
+\pause
+\draw (3,0-0.1) -- (2,-1+0.1);
+
+\pause
+\draw (4,0-0.1) -- (3,-1+0.1);
+
+\pause
+\draw (6,0-0.1) -- (5,-1+0.1);
+
+
+\end{tikzpicture}
+\end{center}
+
+\only<7>{
+A distância entre pescada e escala será 2.
+}
+
+
+\end{frame}
+
+
+\begin{frame}{Aplicativo de navegação}
+
+Aplicativos de navegação, para auxílio ao motorista, são muito comuns hoje em dia. Num país
+distante, a Rotatolândia, todos os entroncamentos de ruas são planejados como rotatórias. Como
+no Brasil, os carros em Rotatolândia trafegam nas rotatórias em sentido anti-horário. Nesse país os
+aplicativos de navegação não dão instruções como
+\begin{itemize}
+\item Na próxima rotatória, pegue a quarta saída;
+\item na próxima rotatória, pegue a primeira saída;
+\item na próxima rotatória, pegue a segunda saída.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Aplicativo de navegação}
+
+Ao invés disso, os aplicativos informam apenas a sequência de números que correspondem às saídas,
+como ``4 1 2'' no exemplo acima. No mapa abaixo, essa sequência é mostrada como um caminho
+parcial.
+
+\begin{center}
+\includegraphics[scale=0.8]{Mapa.png}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}{Aplicativo de navegação}
+
+
+\begin{multicols}{2}
+
+\textbf{Questão 8.} Considerando o mapa acima, se o
+motorista partir de A e seguir as instruções ``3 1
+3 2 3'', qual será o seu destino?
+
+\begin{enumerate}[(A)]
+\item A
+\item B
+\item C
+\item D
+\item E
+
+\end{enumerate}
+
+\columnbreak
+
+
+\begin{center}
+\includegraphics[scale=0.45]{Mapa2.jpeg}
+\end{center}
+
+
+\end{multicols}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Aplicativo de navegação}
+
+
+\begin{multicols}{2}
+
+\textbf{Questão 9.} Considerando o mapa acima, se o
+motorista partir de B, qual das seguintes sequências de instruções o leva para o ponto E?
+
+\begin{enumerate}
+
+\item 3 2 1 1
+\item 3 1 3 2 2
+\item 3 2 1 3 2
+\item 1 1 1 1
+\item 3 2 2 2 3
+
+\end{enumerate}
+
+
+\columnbreak
+
+
+\begin{center}
+\includegraphics[scale=0.45]{Mapa2.jpeg}
+\end{center}
+
+
+\end{multicols}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Colar}
+
+Joel é um artesão que faz colares com conchinhas. Ele utiliza dois tipos de conchinhas, que vamos
+representar por [ ] e \{\}. Para fazer um colar Joel inicia com um par de conchinhas, como mostra o
+passo 1 da figura abaixo, em que ele escolheu para iniciar a conchinha do tipo {}. Para terminar
+o colar novos pares de conchinhas são repetidamente inseridos em qualquer posição do colar, como
+mostram o passo 2 (novo par [ ]), o passo 3 (novo par \{\}) e o passo 4 (novo par \{\}).
+
+\begin{center}
+\begin{tabular}{cccc}
+\{ \} & \{ [ ] \}     & \{ [ ] \{ \} \} & \{ [ ] \{ \} \} \{ \} \\
+\textbf{passo 1} & \textbf{passo 2} & \textbf{passo 3}     & \textbf{passo 4}\\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Colar}
+
+Analisando o processo de construção de um colar
+
+\pause \begin{center}
+\begin{tabular}{cccc}
+\{ \} & \{ [ ] \}     & \{ [ ] \{ \} \} & \{ [ ] \{ \} \} \{ \} \\
+\textbf{passo 1} & \textbf{passo 2} & \textbf{passo 3}     & \textbf{passo 4}\\
+\end{tabular}
+\end{center}
+
+
+\textbf{Observações:}
+
+\begin{enumerate}
+ \pause 
+ \item [1.] Olhando da esquerda para a direita cada colar, não podemos ter mais conchinhas \} e ] do que conchinhas \{ e [.
+ \pause 
+ \item [2.]  Além disso, precisamos respeitar a ordem que as conchinhas de tipo diferentes são fechadas. Por exemplo, essa conchinha $\{ [ \} ]$ não 
+ pode ser feita pelo processo acima. 
+ 
+ 
+\end{enumerate}
+
+
+
+
+\end{frame}
+
+
+
+ 
+ 
+ 
+\begin{frame}[fragile]{Colar}
+
+\begin{multicols}{2}
+\textbf{Questão 10.} Qual dos seguintes colares foi feito
+usando o método descrito acima?
+
+\begin{enumerate}[(A)]
+\item $\{ \} \{ [ ] ] \{ \}$
+\item $[ ] [ ] [ ] \{ \{ ] \}$
+\item $\{ \{ [ ] \} \} [ [ ] ]$
+\item $\{ \{ \{ \{ ] ] ] ]$
+\item $\{ [ ] [ ] \{ \} ]$
+\end{enumerate}
+
+\columnbreak
+
+\only<1>{
+
+item (A)
+
+\{ \} \{ [ ] \colorboxed{red}{]} \{ \}
+
+Não satisfaz a observação (1)
+
+}
+
+
+\only<2>{
+
+item (B)
+
+[ ] [ ] [ ] \{ \{ \colorboxed{red}{]} \}
+
+Não satisfaz a observação (1)
+
+}
+
+
+\only<3>{
+
+item (C)
+
+\{ \{ [ ] \} \} [ [ ] ]
+
+Satisfaz a observação (1) e (2).
+
+}
+
+\only<4>{
+
+item (D)
+
+\{ \{ \{ \{ \colorboxed{red}{]} ] ] ]
+
+Não satisfaz a observação (1) .
+
+}
+
+
+\only<5>{
+
+item (E)
+
+\{ [ ] [ ] \{ \} \colorboxed{red}{]}
+
+Não satisfaz a observação (1) .
+
+}
+
+\end{multicols}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Colar}
+
+\begin{multicols}{2}
+Questão 11. Qual dos seguintes colares não foi
+feito usando o método descrito acima?
+\begin{enumerate}[(A)]
+\item \{ \{ \{ \} \} [ ] \}
+\item \{ [ \} ] \{ \} [ ]
+\item \{ \{ \{ \{ \} \} \} [ ] \}
+\item \{ \} \{ \} \{ \} [ ] [ ] [ ]
+\item \{ [ \{ [ ] [ ] \} ] \}
+\end{enumerate}
+
+\columnbreak
+
+\only<1>{
+
+item (A)
+
+\{ \} \{ [ ] \colorboxed{red}{]} \{ \}
+
+Não satisfaz a observação (1)
+
+}
+
+
+\only<2>{
+
+item (B)
+
+[ ] [ ] [ ] \{ \{ \colorboxed{red}{]} \}
+
+Não satisfaz a observação (1)
+
+}
+
+
+\only<3>{
+
+item (C)
+
+\{ \{ [ ] \} \} [ [ ] ]
+
+Satisfaz a observação (1) e (2).
+
+}
+
+\only<4>{
+
+item (D)
+
+\{ \{ \{ \{ \colorboxed{red}{]} ] ] ]
+
+Não satisfaz a observação (1) .
+
+}
+
+
+\only<5>{
+
+item (E)
+
+\{ [ ] [ ] \{ \} \colorboxed{red}{]}
+
+Não satisfaz a observação (1) .
+
+}
+
+\end{multicols}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{Pilha de Limões}
+
+Para expor seus limões para venda, um feirante os empilha em camadas, cada uma das quais tem a
+forma de um triângulo. A figura abaixo mostra as quatro primeiras camadas da pilha de limões.
+
+
+\begin{center}
+\includegraphics[scale=0.8]{Limao.png}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}{Pilha de Limões}
+
+\begin{center}
+\includegraphics[scale=0.8]{Limao.png}
+\end{center}
+
+
+
+\textbf{Questão 12.} Se a pilha tem quatro camadas,
+quantos limões conterá uma pilha no formato
+acima?
+
+\begin{enumerate}
+\item  15
+\item  16
+\item  17
+\item  18
+\item  20
+
+
+\end{enumerate}
+
+ 
+\end{frame}
+
+
+\begin{frame}{Pilha de Limões}
+
+\begin{center}
+\includegraphics[scale=0.8]{Limao.png}
+\end{center}
+
+
+
+\textbf{Questão 12.} Se a pilha tem quatro camadas,
+quantos limões conterá uma pilha no formato
+acima?
+
+
+Precisamos apenas realizar o seguinte cálculo:
+
+\begin{equation}
+1 + 3 + 6 + 10 = 20 \nonumber
+\end{equation}
+
+\end{frame}
+
+
+\begin{frame}{Pilha de Limões}
+
+\begin{center}
+\includegraphics[scale=0.8]{Limao.png}
+\end{center}
+
+
+\textbf{Questão 13.} O feirante sabe que não pode fazer
+uma pilha com mais do que oito camadas, para
+não estragar as frutas. Qual é o maior número
+de limões que podem ser empilhados no formato
+acima?
+\begin{enumerate}[(A)]
+\item 120
+\item 140
+\item 160
+\item 180
+\item 200
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Pilha de Limões}
+
+\begin{center}
+\includegraphics[scale=0.8]{Limao.png}
+\end{center}
+
+Neste problema, vamos utilizar uma técnica matemática chamada de recorrência que permite definir sequências, conjuntos, operações, algoritmos partindo
+de casos simples.
+
+Vamos definir a função $T(n)$ como sendo a função que recebe o valor $n$ representando uma camada da pilha de limões e calcula o número de limões 
+desta camada $n$.  
+
+$
+T(n) = \begin{cases}
+       1          &, n = 1\\
+       T(n-1) + n &, n \geq 2
+       \end{cases}
+$
+
+
+\end{frame}
+
+
+\begin{frame}{Pilha de Limões}
+\small{
+$
+T(n) = \begin{cases}
+       1          &, n = 1\\
+       T(n-1) + n &, n \geq 2
+       \end{cases}
+$
+
+Agora, podemos utilizar a recorrência acima para calcular o número de limões até a oitava camada.
+}
+
+
+\begin{tabular}{lll}
+
+\only<1->{
+$T(1)$ &  = &  1\\
+}
+\only<2>{
+$T(2)$ &  = &   T(1) + 2 \\
+}
+\only<3->{
+$T(2)$ &  = &  3 \\
+}
+\only<4>{
+$T(3)$ &  = &  T(3) + 3 \\
+}
+\only<5->{
+$T(3)$ &  = &  6 \\
+}
+\only<6>{
+$T(4)$ &  = &  T(3) + 4 \\
+}
+\only<7->{
+$T(4)$ &  = &  10 \\
+}
+
+\only<8>{
+$T(5)$ &  = &  T(4) + 5 \\
+}
+\only<9->{
+$T(5)$ &  = &  15 \\
+}
+
+\only<10>{
+$T(6)$ &  = &  T(5) + 6 \\
+}
+\only<11->{
+$T(6)$ &  = &  21 \\
+}
+
+\only<12>{
+$T(7)$ &  = &  T(6) + 7 \\
+}
+\only<13->{
+$T(7)$ &  = &  28 \\
+}
+
+\only<14>{
+$T(8)$ &  = &  T(7) + 8 \\
+}
+\only<15->{
+$T(8)$ &  = &  36 \\
+}
+
+\end{tabular}
+	  
+Somando o número de limões da primeira camada até a oitava camada obtermos 120.	  
+
+
+
+\end{frame}
+
+
+\begin{frame}{Mesas}
+Uma nova sala de aula foi inaugurada, para estudo e exercícios em grupo. A sala de aula tem mesas
+para seis estudantes. Quando as mesas são colocadas juntas, numa única fila de mesas, elas podem
+ser usadas pelo número de estudantes mostrado na figura abaixo:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{mesas.jpeg}
+\label{fig:exampleFig2}
+\end{figure}
+    
+    
+\end{frame}
+
+
+\begin{frame}{Mesas}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{mesas.jpeg}
+\label{fig:exampleFig2}
+\end{figure}
+    
+    
+\textbf{Questão 14.}  Quantos estudantes podem usar
+quatro mesas colocadas juntas como mostrado?
+
+\begin{enumerate}[(A)]
+    \item 15
+    \item 16
+    \item 18
+    \item 20
+    \item 24
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Mesas}
+
+\begin{center}
+ 
+
+\begin{tikzpicture}[semic/.style args={#1,#2}{semicircle,minimum width=#1,draw,anchor=arc end,rotate=#2},outer sep=0pt,line width=.7pt]  
+
+%\draw[help lines] (0,0) grid (8,1);
+\draw [black, line width=1pt] (0,0) rectangle (2,1);
+\draw [black, line width=1pt] (2,0) rectangle (4,1);
+\draw [black, line width=1pt] (4,0) rectangle (6,1);
+\draw [black, line width=1pt] (6,0) rectangle (8,1);
+
+\node [semic={0.4cm,0}]    at (0.2,1){};
+\node [semic={0.4cm,0}]    at (1.2,1){};
+
+\node [semic={0.4cm,0}]    at (2.2,1){};
+\node [semic={0.4cm,0}]    at (3.2,1){};
+
+\node [semic={0.4cm,0}]    at (4.2,1){};
+\node [semic={0.4cm,0}]    at (5.2,1){};
+
+\node [semic={0.4cm,0}]    at (6.2,1){};
+\node [semic={0.4cm,0}]    at (7.2,1){};
+
+
+\node [semic={0.4cm,180}]    at (0.8,0){};
+\node [semic={0.4cm,180}]    at (1.8,0){};
+
+\node [semic={0.4cm,180}]    at (2.8,0){};
+\node [semic={0.4cm,180}]    at (3.8,0){};
+
+\node [semic={0.4cm,180}]    at (4.8,0){};
+\node [semic={0.4cm,180}]    at (5.8,0){};
+
+\node [semic={0.4cm,180}]    at (6.8,0){};
+\node [semic={0.4cm,180}]    at (7.8,0){};
+
+
+\node [semic={0.4cm,90}]    at (0,0.2){};
+\node [semic={0.4cm,270}]   at (8,0.8){};
+
+
+\end{tikzpicture}
+
+\end{center}
+
+
+Na figura acima, podemos ver que o número de estudantes que podem  usar quatro mesas colocadas juntas é 18.
+
+%Podemos visualizar 4 mesas colocadas juntas da seguinte forma:
+
+%Se contarmos a quantidade de cadeiras, teremos que o total será 18. Entretanto, vamos solucionar de forma que poderemos obter o resultado para qualquer quantidade de mesas.
+    
+\end{frame}
+
+\begin{frame}[fragile]{Mesas}
+
+
+
+%Podemos observar que SEMPRE teremos 2 cadeiras nas laterais direita e esquerda. 
+
+Podemos observar que em toda configuração de cadeiras teremos sempre 2 cadeiras nas mesas das pontas.
+
+\begin{center}
+ 
+\scalebox{0.5}{
+\begin{tikzpicture}[ semic/.style args={#1,#2}{semicircle,minimum width=#1,draw,anchor=arc end,rotate=#2},outer sep=0pt,line width=.7pt]  
+
+%\draw[help lines] (0,0) grid (8,1);
+\draw [black, line width=1pt] (0,0) rectangle (2,1);
+\draw [black, line width=1pt] (2,0) rectangle (4,1);
+\draw [black, line width=1pt] (4,0) rectangle (6,1);
+\draw [black, line width=1pt] (6,0) rectangle (8,1);
+
+\node [semic={0.4cm,0}]    at (0.2,1){};
+\node [semic={0.4cm,0}]    at (1.2,1){};
+
+\node [semic={0.4cm,0}]    at (2.2,1){};
+\node [semic={0.4cm,0}]    at (3.2,1){};
+
+\node [semic={0.4cm,0}]    at (4.2,1){};
+\node [semic={0.4cm,0}]    at (5.2,1){};
+
+\node [semic={0.4cm,0}]    at (6.2,1){};
+\node [semic={0.4cm,0}]    at (7.2,1){};
+
+
+\node [semic={0.4cm,180}]    at (0.8,0){};
+\node [semic={0.4cm,180}]    at (1.8,0){};
+
+\node [semic={0.4cm,180}]    at (2.8,0){};
+\node [semic={0.4cm,180}]    at (3.8,0){};
+
+\node [semic={0.4cm,180}]    at (4.8,0){};
+\node [semic={0.4cm,180}]    at (5.8,0){};
+
+\node [semic={0.4cm,180}]    at (6.8,0){};
+\node [semic={0.4cm,180}]    at (7.8,0){};
+
+
+\node [fill=red, semic={0.4cm,90}]    at (0,0.2){};
+\node [fill=red, semic={0.4cm,270}]   at (8,0.8){};
+
+
+\end{tikzpicture}
+}
+
+\end{center}
+
+
+%Então, para cada mesa teremos 4 cadeiras. Isso acontece pois as cadeiras laterais estarão nas duas pontas, já que as mesas estão juntas. 
+
+Tirando as cadeiras das duas pontas, podemos colocar 4 cadeiras em cada mesa.
+
+\begin{center}
+ 
+\scalebox{0.5}{
+\begin{tikzpicture}[ semic/.style args={#1,#2}{semicircle,minimum width=#1,draw,anchor=arc end,rotate=#2},outer sep=0pt,line width=.7pt]  
+
+%\draw[help lines] (0,0) grid (8,1);
+\draw [black, line width=1pt] (0,0) rectangle (2,1);
+\draw [black, line width=1pt] (2,0) rectangle (4,1);
+\draw [black, line width=1pt] (4,0) rectangle (6,1);
+\draw [black, line width=1pt] (6,0) rectangle (8,1);
+
+\node [fill=red, semic={0.4cm,0}]    at (0.2,1){};
+\node [fill=red,semic={0.4cm,0}]    at (1.2,1){};
+
+\node [fill=red,semic={0.4cm,0}]    at (2.2,1){};
+\node [fill=red,semic={0.4cm,0}]    at (3.2,1){};
+
+\node [fill=red,semic={0.4cm,0}]    at (4.2,1){};
+\node [fill=red,semic={0.4cm,0}]    at (5.2,1){};
+
+\node [fill=red,semic={0.4cm,0}]    at (6.2,1){};
+\node [fill=red,semic={0.4cm,0}]    at (7.2,1){};
+
+
+\node [fill=red,semic={0.4cm,180}]    at (0.8,0){};
+\node [fill=red,semic={0.4cm,180}]    at (1.8,0){};
+
+\node [fill=red,semic={0.4cm,180}]    at (2.8,0){};
+\node [fill=red,semic={0.4cm,180}]    at (3.8,0){};
+
+\node [fill=red,semic={0.4cm,180}]    at (4.8,0){};
+\node [fill=red,semic={0.4cm,180}]    at (5.8,0){};
+
+\node [fill=red,semic={0.4cm,180}]    at (6.8,0){};
+\node [fill=red,semic={0.4cm,180}]    at (7.8,0){};
+
+
+%\node [fill=red, semic={0.4cm,90}]    at (0,0.2){};
+%\node [fill=red, semic={0.4cm,270}]   at (8,0.8){};
+
+
+\end{tikzpicture}
+}
+
+\end{center}
+
+    
+\end{frame}
+
+
+
+\begin{frame}{Mesas}
+ 
+%Com isso, podemos calcular o número de cadeiras para qualquer quantidade de mesas da seguinte forma:
+
+Com isso, podemos definir uma função $cadeiras(n)$ que calcula o número de cadeiras em função do número de mesas representado por $n$. 
+
+\begin{equation*}
+    cadeiras(n) = 4 \ast n + 2
+\end{equation*}
+
+Para $n = 4$, temos
+
+\begin{equation*}
+    cadeiras(4) = (4\ast 4) + 2 = 18
+\end{equation*}
+
+% Resolvendo primeiramente a multiplicação, temos que
+% \begin{equation*}
+%     qntCadeiras = 2 + 16
+% \end{equation*}
+% Finalizando a soma, podemos concluir que
+% \begin{equation*}
+%     qntCadeiras = 18~cadeiras
+% \end{equation*}
+
+\end{frame}
+
+\begin{frame}{Mesas}
+\textbf{Questão 14.}  Quantos estudantes podem usar
+quatro mesas colocadas juntas como mostrado?
+
+\begin{enumerate}[(A)]
+    \item 15
+    \item 16
+    \item \textbf{18}
+    \item 20
+    \item 24
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Mesas}
+\textbf{Questão 15. } Para que 42 estudantes usem mesas colocadas juntas como mostrado, quantas mesas são necessárias?
+\begin{enumerate}[(A)]
+    \item 6
+    \item 7
+    \item 8
+    \item 9
+    \item 10
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Mesas - Resolução}
+Para calcular a quantidade de mesas, podemos utilizar a fórmula que encontramos:
+\begin{equation*}
+    qntCadeiras = 2 + (4\ast qntMesas)
+\end{equation*}
+Dessa vez, vamos substituir a quantidade de cadeiras (qntCadeiras) e encontrar a quantidade de mesas (qntMesas). Então, para 42 estudantes temos que
+\begin{equation*}
+    42 = 2 + (4\ast qntMesas)
+\end{equation*}
+Mudando de lado na equação, temos que
+\begin{equation*}
+    2 + (4\ast qntMesas) = 42
+\end{equation*}
+Fazendo a manipulação algébrica
+\begin{equation*}
+4\ast qntMesas = 42 - 2
+\end{equation*}
+\begin{equation*}
+4\ast qntMesas = 40
+\end{equation*}
+Logo, 
+\begin{equation*}
+ qntMesas = 40\div4 = 10 mesas
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Mesas}
+\textbf{Questão 15. } Para que 42 estudantes usem mesas colocadas juntas como mostrado, quantas mesas são necessárias?
+\begin{enumerate}[(A)]
+    \item 6
+    \item 7
+    \item 8
+    \item 9
+    \item \textbf{10}
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Lanche}
+
+Seis frutas (abacaxi, banana, caqui, laranja, pera e romã )  vão servir de lanche para três amigos: Mario, Nei e Olga. Cada amigo vai comer exatamente duas frutas, respeitando as seguintes
+condições:
+
+\begin{itemize}
+\item Se Olga come abacaxi, Mario come caqui.
+\item Se Olga não come banana, então Nei come romã.
+\item Mario não pode comer laranja.
+\item Abacaxi não é comido pela mesma pessoa que come banana, nem caqui é comido pela mesma
+pessoa que come pera, nem laranja é comida pela mesma pessoa que come romã.
+\end{itemize}
+
+
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Lanches}
+
+
+\begin{multicols}{2}
+ 
+\small{ 
+\textbf{Questão 16.} Qual das seguintes alternativas
+é uma possível lista de frutas e pessoas que as
+comem?
+\begin{enumerate}[(A)]
+\item Mario: banana, pera; Nei: caqui, romã;
+Olga: abacaxi, laranja
+\item Mario: banana, romã; Nei: abacaxi, pera;
+Olga: caqui, laranja
+\item  Mario: caqui, pera; Nei: abacaxi, laranja;
+Olga: banana, romã
+\item Mario: caqui, romã; Nei: abacaxi, pera;
+Olga: banana, laranja
+\item Mario: abacaxi, laranja; Nei: banana, caqui; Olga: pera, romã
+\end{enumerate}
+
+}
+\columnbreak
+
+{\tiny
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item Se Olga come abacaxi, Mario come caqui.
+\item Se Olga não come banana, então Nei come romã.
+\item Mario não pode comer laranja.
+\item Abacaxi não é comido pela mesma pessoa que come banana, nem caqui é comido pela mesma
+pessoa que come pera, nem laranja é comida pela mesma pessoa que come romã.
+\end{itemize}
+\end{minipage}
+}
+}
+
+
+\only<1>{
+
+\small
+
+item (A)
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &  banana     & pera  \\
+\hline
+Nei   &  caqui      & romã  \\ 
+\hline
+Olga  &  abacaxi    & laranja  \\
+\hline
+\end{tabular}\\
+
+
+Olga come abacaxi e Mário não com caqui.
+
+}
+
+\only<2>{
+
+\small
+
+item (B)
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &  banana     & romã  \\
+\hline
+Nei   &  abacaxi      & pera  \\ 
+\hline
+Olga  &  caqui    & laranja  \\
+\hline
+\end{tabular}\\
+
+
+Olga não come banana e Nei não come romã.
+
+}
+
+\only<3>{
+
+\small
+
+item (C)
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &  caqui     & pera  \\
+\hline
+Nei   &  abacaxi      & laranja  \\ 
+\hline
+Olga  &  banana    & romã  \\
+\hline
+\end{tabular}\\
+
+
+Caqui e pera não pode ser comido pela mesma pessoa
+
+}
+
+\only<4>{
+
+\small
+
+item (D)
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &  caqui     & romã  \\
+\hline
+Nei   &  abacaxi      & pera  \\ 
+\hline
+Olga  &  banana    & laranja  \\
+\hline
+\end{tabular}
+
+
+
+}
+
+\only<5>{
+
+\small
+
+item (E)
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &  abacaxi     & laranja  \\
+\hline
+Nei   &  banana      & caqui  \\ 
+\hline
+Olga  &  pera    & romã  \\
+\hline
+\end{tabular}
+
+Mário não pode comer laranja.
+
+}
+
+\end{multicols}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Lanches}
+
+
+\begin{multicols}{2}
+ 
+\small{ 
+
+\textbf{Questão 17.} Se Olga come caqui e laranja, qual
+das seguintes alternativas é necessariamente verdadeira?
+\begin{enumerate}[(A)]
+\item  Abacaxi é comido pela mesma pessoa que
+come romã.
+\item  Mario come pera.
+\item  Banana é comida pela mesma pessoa que
+come pera
+\item  Nei come abacaxi.
+\item  Mario come banana
+\end{enumerate}
+
+}
+
+\columnbreak
+
+{\tiny
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item Se Olga come abacaxi, Mario come caqui.
+\item Se Olga não come banana, então Nei come romã.
+\item Mario não pode comer laranja.
+\item Abacaxi não é comido pela mesma pessoa que come banana, nem caqui é comido pela mesma
+pessoa que come pera, nem laranja é comida pela mesma pessoa que come romã.
+\end{itemize}
+\end{minipage}
+}
+}
+
+\only<1>{
+
+\small
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &             &   \\ 
+\hline
+Olga  &  caqui    & laranja  \\
+\hline
+\end{tabular}\\
+
+}
+
+\only<2>{
+
+\small
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &             &   \\ 
+\hline
+Olga  &  caqui    & laranja  \\
+\hline
+\end{tabular}\\
+
+Como Olga não come banana, então Nei come romã.
+
+}
+
+\only<3>{
+
+\small
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &  romã           &   \\ 
+\hline
+Olga  &  caqui    & laranja  \\
+\hline
+\end{tabular}\\
+
+Como Olga não come banana, então Nei come romã.
+
+}
+
+\only<4>{
+
+\small
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &              &   \\
+\hline
+Nei   &  romã           &   \\ 
+\hline
+Olga  &  caqui    & laranja  \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Sobram abacaxi, pera, banana.
+\item Como Mário não pode comer abacaxi e banana ao mesmo tempo,
+então Mário come pera.
+\end{itemize}
+}
+
+\only<5>{
+
+\small
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &  pera             &   \\
+\hline
+Nei   &  romã           &   \\ 
+\hline
+Olga  &  caqui    & laranja  \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Sobram abacaxi, pera, banana.
+\item Como Mário não pode comer abacaxi e banana ao mesmo tempo,
+então Mário come pera.
+\end{itemize}
+}
+
+
+\end{multicols}
+
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Lanches}
+
+
+\begin{multicols}{2}
+ 
+\small{ 
+
+\textbf{Questão 18.} Se Olga come romã, qual das
+seguintes alternativas é necessariamente verdadeira?
+\only<1-5>{
+\begin{enumerate}[(A)]
+\item Nei come caqui.
+\item Mario come caqui.
+\item Mario come pera.
+\item Mario come laranja.
+\item Mario come abacaxi.
+\end{enumerate}
+}
+
+\only<6>{
+\begin{enumerate}[(A)]
+\item Nei come caqui.
+\item Mario come caqui.
+\item Mario come pera.
+\item Mario come laranja.
+\item \textbf{Mario come abacaxi.}
+\end{enumerate}
+
+}
+
+}
+\columnbreak
+
+{\tiny
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item Se Olga come abacaxi, Mario come caqui.
+\item Se Olga não come banana, então Nei come romã.
+\item Mario não pode comer laranja.
+\item Abacaxi não é comido pela mesma pessoa que come banana, nem caqui é comido pela mesma
+pessoa que come pera, nem laranja é comida pela mesma pessoa que come romã.
+\end{itemize}
+\end{minipage}
+}
+}
+
+\only<1>{
+
+\small
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &             &   \\ 
+\hline
+Olga  &  romã    &   \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Se Olga não come banana, então Nei come romã.
+\item Como Nei não pode comer romã, então Olga come banana.
+\end{itemize}
+}
+
+\only<2>{
+
+\small
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &             &   \\ 
+\hline
+Olga  &  romã    & banana  \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Se Olga não come banana, então Nei come romã.
+\item Como Nei não pode comer romã, então Olga come banana.
+\end{itemize}
+
+}
+
+\only<3>{
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &             &   \\ 
+\hline
+Olga  &  romã    & banana  \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Sobram laranja, abacaxi, pera, caqui.
+\item Como Mário não pode comer laranja, então Nei come laranja. 
+\end{itemize}
+
+}
+
+\only<4>{
+
+\small 
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &  laranja   &   \\ 
+\hline
+Olga  &  romã    & banana  \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Sobram abacaxi, pera, caqui.
+\item Mario não pode comer caqui e pera ao mesmo tempo, então Mário come abacaxi
+\end{itemize}
+
+
+
+}
+
+\only<5>{
+
+\small 
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &  abacaxi           &   \\
+\hline
+Nei   &  laranja   &   \\ 
+\hline
+Olga  &  romã    & banana  \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Sobram abacaxi, pera, caqui.
+\item Mario não pode comer caqui e pera ao mesmo tempo, então Mário come abacaxi
+\end{itemize}
+
+
+}
+
+
+\end{multicols}
+
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Lanches}
+
+
+\begin{multicols}{2}
+ 
+\small{ 
+
+\textbf{Questão 19.} Qual dos seguintes pares de frutas
+Nei não pode comer?
+\begin{enumerate}[(A)]
+\item banana e laranja
+\item abacaxi e caqui
+\item abacaxi e romã
+\item caqui e laranja
+\item pera e romã
+\end{enumerate}
+
+}
+\columnbreak
+
+{\tiny
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item Se Olga come abacaxi, Mario come caqui.
+\item Se Olga não come banana, então Nei come romã.
+\item Mario não pode comer laranja.
+\item Abacaxi não é comido pela mesma pessoa que come banana, nem caqui é comido pela mesma
+pessoa que come pera, nem laranja é comida pela mesma pessoa que come romã.
+\end{itemize}
+\end{minipage}
+}
+}
+
+\only<1>{
+
+\small
+
+item (A)
+
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &  banana           &  laranja \\ 
+\hline
+Olga  &      &   \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Se Olga não come banana, então Nei come romã.
+\end{itemize}
+
+}
+
+
+
+\end{multicols}
+
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Lanches}
+
+
+\begin{multicols}{2}
+ 
+\small{ 
+
+\textbf{Questão 19.} Qual dos seguintes pares de frutas
+Nei não pode comer?
+\begin{enumerate}[(A)]
+\item banana e laranja
+\item abacaxi e caqui
+\item abacaxi e romã
+\item caqui e laranja
+\item pera e romã
+\end{enumerate}
+
+}
+\columnbreak
+
+{\tiny
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item Se Olga come abacaxi, Mario come caqui.
+\item Se Olga não come banana, então Nei come romã.
+\item Mario não pode comer laranja.
+\item Abacaxi não é comido pela mesma pessoa que come banana, nem caqui é comido pela mesma
+pessoa que come pera, nem laranja é comida pela mesma pessoa que come romã.
+\end{itemize}
+\end{minipage}
+}
+}
+
+\only<1>{
+
+\small
+
+item (A)
+
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &  banana           &  laranja \\ 
+\hline
+Olga  &      &   \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Se Olga não come banana, então Nei come romã.
+\end{itemize}
+
+}
+
+
+
+\end{multicols}
+
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Lanches}
+
+
+\begin{multicols}{2}
+ 
+\small{ 
+
+\textbf{Questão 20.} Qual dos seguintes pares de frutas
+Mario não pode comer?
+\begin{enumerate}[(A)]
+\item abacaxi e caqui
+\item abacaxi e pera
+\item banana e pera
+\item pera e laranja
+\item pera e romã
+\end{enumerate}
+
+}
+\columnbreak
+
+{\tiny
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item Se Olga come abacaxi, Mario come caqui.
+\item Se Olga não come banana, então Nei come romã.
+\item Mario não pode comer laranja.
+\item Abacaxi não é comido pela mesma pessoa que come banana, nem caqui é comido pela mesma
+pessoa que come pera, nem laranja é comida pela mesma pessoa que come romã.
+\end{itemize}
+\end{minipage}
+}
+}
+
+\only<1>{
+
+\small
+
+item (A)
+
+
+\begin{tabular}{|l|l|l|}
+\hline      
+Mario &             &   \\
+\hline
+Nei   &  banana           &  laranja \\ 
+\hline
+Olga  &      &   \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Se Olga não come banana, então Nei come romã.
+\end{itemize}
+
+}
+
+
+
+\end{multicols}
+
+
+
+\end{frame}
+
+
+\end{document}
+ 
+ 

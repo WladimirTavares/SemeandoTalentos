@@ -1,0 +1,63 @@
+\frametitle{Lanches}
+
+
+\begin{multicols}{2}
+
+\small{
+
+\textbf{Questão 20.} Qual dos seguintes pares de frutas
+Mario não pode comer?
+\begin{enumerate}[(A)]
+\item abacaxi e caqui
+\item abacaxi e pera
+\item banana e pera
+\item pera e laranja
+\item pera e romã
+\end{enumerate}
+
+}
+\columnbreak
+
+{\tiny
+\noindent\fcolorbox{black}{yellow}{
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item Se Olga come abacaxi, Mario come caqui.
+\item Se Olga não come banana, então Nei come romã.
+\item Mario não pode comer laranja.
+\item Abacaxi não é comido pela mesma pessoa que come banana, nem caqui é comido pela mesma
+pessoa que come pera, nem laranja é comida pela mesma pessoa que come romã.
+\end{itemize}
+\end{minipage}
+}
+}
+
+\only<1>{
+
+\small
+
+item (A)
+
+
+\begin{tabular}{|l|l|l|}
+\hline
+Mario &             &   \\
+\hline
+Nei   &  banana           &  laranja \\
+\hline
+Olga  &      &   \\
+\hline
+\end{tabular}\\
+
+\begin{itemize}
+\item Se Olga não come banana, então Nei come romã.
+\end{itemize}
+
+}
+
+
+
+\end{multicols}
+
+
+
